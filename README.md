@@ -6,7 +6,7 @@
  * [Prerequisites](#prerequisites)
  * [Preparation](#preparation)
  * [Gameplay](#gameplay)
- * [reference](#reference)
+ * [Reference](#reference)
 
 **NOTE: Watch this space!** This repo will be updated occasionally in the run-up to the actual workshop. Feel free to visit this about once a week to see what's new as a way to help you prepare for the session.
 
