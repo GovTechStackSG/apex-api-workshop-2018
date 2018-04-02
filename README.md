@@ -1,4 +1,4 @@
-# APEX API Challenge - DotA (Defence of the API)
+# APEX API Challenge - DotA (Defence of the APIs)
 ## 2018-05 GDS AI Conference - APEX Hands-on Workshop
 
  * [Overview](#overview)
@@ -19,7 +19,7 @@ This is a hands-on session where participants will design and secure their APIs 
 | No | Sessions |
 | --- | --- |
 | 1 | Introduction to CM |
-| 2| Consuming your first API |
+| 2 | Consuming your first API |
 | 3 | Quick Break |
 | 4 | API Challenge |
 
@@ -30,7 +30,7 @@ This is a hands-on session where participants will design and secure their APIs 
 ### Gameplay
 
 #### Objectives
-- To help participants familiarise Apex/Akana portal within 30 mintues through game
+- To help participants familiarise Apex/Akana portal within 30 minutes through an interactive team-based API game
 - Participants will know how to invoke an L0/L1/L2 secured API 
 - Participants will know how to create an App in APEX
 
