@@ -12,7 +12,16 @@
 
 ### Overview
 
+This is a hands-on session where participants will design and secure their APIs with elements of gamification.
+
 ### Agenda
+
+| No | Sessions |
+| --- | --- |
+| 1 | Introduction to CM |
+| 2| Consuming your first API |
+| 3 | Quick Break |
+| 4 | API Challenge |
 
 ### Prerequisites
 
