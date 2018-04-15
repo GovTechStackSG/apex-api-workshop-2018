@@ -25,7 +25,35 @@ This is a hands-on session where participants will design and secure their APIs 
 
 ### Prerequisites
 
+- Some knowledge of programming. Examples files (Javascripts) will be provided for the workshop
+- Working laptop with Wifi capability.
+- Your Curiousity !
+
 ### Preparation
+
+1) Participant's machine set-up for workshop
+
+- Node.js version 8.x.x LTS
+- Text Editors 
+    - Vs Code (Recommended)
+    - Notepad ++
+    - Sublime Text
+- API Test Client (Optional) 
+    - Postman (Recommended)
+    - Restlet 
+- Git 
+
+2) Clone this Repository
+
+Open your terminal / command prompt, and navigate to your local's workspace. You will clone this repository to that location.
+
+```
+cd <somelocation in your system>
+
+git clone https://github.com/robincher/apex-dota-workshop.git
+```
+
+Open out the folder with your favorite code editor.
 
 ### Gameplay
 
