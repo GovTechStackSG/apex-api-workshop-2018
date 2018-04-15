@@ -12,7 +12,7 @@
 
 ### Overview
 
-This is a hands-on session where participants will design and secure their APIs with elements of gamification.
+This is a hands-on session where participants will design and secure their APIs. You will also get to play a game where you will be able to apply what you have learned from our workshop.
 
 ### Agenda
 
@@ -25,40 +25,40 @@ This is a hands-on session where participants will design and secure their APIs 
 
 ### Prerequisites
 
-- Some knowledge of programming. Examples files (Javascripts) will be provided for the workshop
+- Some knowledge of programming. Examples files (in Javascript/NodeJS) will be provided for the workshop.
 - Working laptop with Wifi capability.
-- Your Curiousity !
+- Your Curiousity!
 
 ### Preparation
 
 #### Participant's machine set-up 
 
-- [Node.js version 8.x.x LTS](https://nodejs.org/en/download/)
-- Text Editors 
+- [Node.js version, 8.x.x LTS recommended](https://nodejs.org/en/download/)
+- Text Editors
     - [Microsoft VS Code](https://code.visualstudio.com/download) (Recommended)
     - Notepad++/Sublime Text
     - Vim/Nano
 - API Test Client (Optional) 
-    - [Postman Chrome Plugin](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) (Recommended)
-    - Restlet 
+    - [Postman Chrome Plugin](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) or [Postman Desktop App](https://www.getpostman.com/) (Recommended)
+    - Restlet
 - [Git](https://git-scm.com/downloads)
 
-#### Clone this Repository
+#### Clone the examples in this repository
 
 Open your terminal / command prompt, and navigate to your local's workspace. You will clone this repository to that location.
 
 ```
-cd <somelocation in your system>
+cd <some location in your system>
 
 git clone https://github.com/robincher/apex-dota-workshop.git
 ```
 
-Open out the folder with your favorite code editor.
+Open the folder with your favorite code editor.
 
 ### Gameplay
 
 #### Objectives
-- To help participants familiarise Apex/Akana portal within 30 minutes through an interactive team-based API game
+- To help participants familiarise Apex/Akana portal through an interactive team-based API game
 - Participants will know how to invoke an L0/L1/L2 secured API 
 - Participants will know how to create an App in APEX
 
