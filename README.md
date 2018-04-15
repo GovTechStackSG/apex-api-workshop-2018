@@ -31,19 +31,19 @@ This is a hands-on session where participants will design and secure their APIs 
 
 ### Preparation
 
-1) Participant's machine set-up for workshop
+#### Participant's machine set-up 
 
-- Node.js version 8.x.x LTS
+- [Node.js version 8.x.x LTS](https://nodejs.org/en/download/)
 - Text Editors 
-    - Vs Code (Recommended)
-    - Notepad ++
-    - Sublime Text
+    - [Microsoft VS Code](https://code.visualstudio.com/download) (Recommended)
+    - Notepad++/Sublime Text
+    - Vim/Nano
 - API Test Client (Optional) 
-    - Postman (Recommended)
+    - [Postman Chrome Plugin](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) (Recommended)
     - Restlet 
-- Git 
+- [Git](https://git-scm.com/downloads)
 
-2) Clone this Repository
+#### Clone this Repository
 
 Open your terminal / command prompt, and navigate to your local's workspace. You will clone this repository to that location.
 
