@@ -1,4 +1,4 @@
-# APEX API Challenge - DotA (Defence of the APIs)
+# APEX API Challenge - Defence of the APIs
 ## 2018-05 GDS AI Conference - APEX Hands-on Workshop
 
  * [Overview](#overview)
