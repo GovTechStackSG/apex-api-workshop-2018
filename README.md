@@ -33,6 +33,7 @@ This is a hands-on session where participants will design and secure their APIs.
 
 #### Participant's machine set-up 
 
+- Google Chrome (highly recommended)
 - [Node.js version, 8.x.x LTS recommended](https://nodejs.org/en/download/)
 - Text Editors
     - [Microsoft VS Code](https://code.visualstudio.com/download) (Recommended)
