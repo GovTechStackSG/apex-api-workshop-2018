@@ -5,8 +5,7 @@
  * [Agenda](#agenda)
  * [Prerequisites](#prerequisites)
  * [Preparation](#preparation)
- * [Gameplay](#gameplay)
- * [Reference](#reference)
+ * [Gameplay](#api-challenge)
 
 **NOTE: Watch this space!** This repo will be updated occasionally in the run-up to the actual workshop. Feel free to visit this about once a week to see what's new as a way to help you prepare for the session.
 
@@ -72,4 +71,8 @@ Team will need to gather weapons and attack other team's fortress.
 
 ### APIs List (Take Note!)
 
-## References
+### Important links
+
+- Interactive Apex signature token validator: https://github.com/GovTechSG/apex-signature-validator
+
+- Node.js Library for signing API requests: https://github.com/GovTechSG/node-apex-api-security
