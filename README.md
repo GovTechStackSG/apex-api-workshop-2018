@@ -43,17 +43,29 @@ This is a hands-on session where participants will design and secure their APIs.
     - Restlet
 - [Git](https://git-scm.com/downloads)
 
-### Clone the examples in this repository
+### Using the examples
 
-Open your terminal / command prompt, and navigate to your local's workspace. You will clone this repository to that location.
+**You will need the [Node.js runtime](https://nodejs.org/en/) installed to run the examples in this repository**
 
-```
+Clone this repository to your machine. You can study the code in the examples folder to see how this is done for secured endpoints.
+
+You will be given the actual gateway-secured APIs during the workshop to call.
+
+```bash
 $ cd /your/local/workspace
 
 $ git clone https://github.com/GovTechStackSG/apex-api-workshop-2018.git
+
+$ cd /your/local/workspace/apex-api-workshop-2018/examples
+
+$ node getTeamStatus.js
+
+$ node getProtectedWeapon.js
 ```
 
-Open the folder with your favorite code editor.
+`getTeamStatus.js` shows how to access the API challenge's team status API.
+
+`getProtectedWeapon.js` shows how to use the Apex security utilities to access protected weapon APIs.
 
 ## API Challenge
 

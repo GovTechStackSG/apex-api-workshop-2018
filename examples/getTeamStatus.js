@@ -10,5 +10,5 @@ return request.get('https://example.api.dev/apex-dota/api/teams/status')
         console.log(response.body);
     })
     .catch(error => {
-        console.log(error.response.error);
+        console.log(error.response ? error.response.error : error);
     });
