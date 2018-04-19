@@ -1,0 +1,23 @@
+{
+  "name": "apex-api-workshop-2018",
+  "version": "1.0.0",
+  "description": "Apex API Workshop 2018 package list",
+  "main": "getProtectedWeapon.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "superagent": "^3.8.2",
+    "node-apex-api-security": "git+https://github.com/GovTechSG/node-apex-api-security.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GovTechStackSG/apex-api-workshop-2018.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GovTechStackSG/apex-api-workshop-2018/issues"
+  },
+  "homepage": "https://github.com/GovTechStackSG/apex-api-workshop-2018#readme"
+}
