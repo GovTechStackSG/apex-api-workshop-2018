@@ -1,4 +1,5 @@
 # APEX API Challenge - Defence of the APIs
+![APEX Logo](https://github.com/GovTechStackSg/apex-api-workshop-2018/blob/master/assets/color_apex_landscape.png)
 ## May 2018 GDS AI Conference - APEX Hands-on Workshop
 
  * [Overview](#overview)
