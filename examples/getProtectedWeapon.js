@@ -26,7 +26,7 @@ function getL1Weapon(teamName) {
 
     return request(httpMethod, endpoint)
         .ca(ca)
-        .set('authorization', authToken) // Set authorization header to token
+        .set('Authorization', authToken) // Set authorization header to token
         .send()
         .then(function(response) { // If API is successfully called
             console.log('Success!');
@@ -60,7 +60,7 @@ function getL2Weapon(teamName) {
 
     return request(httpMethod, endpoint)
         .ca(ca)
-        .set('authorization', authToken)
+        .set('Authorization', authToken)
         .send()
         .then(function(response) {
             console.log('Success!');
