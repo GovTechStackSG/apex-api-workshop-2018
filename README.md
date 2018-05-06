@@ -33,6 +33,8 @@ This is a hands-on session where participants will design and secure their APIs.
 
 ### Participant's machine set-up 
 
+Please set up your machine before the session with the followings :
+
 - Google Chrome (highly recommended)
 - [Node.js version, 8.x.x LTS recommended](https://nodejs.org/en/download/)
 - Text Editors
@@ -66,12 +68,12 @@ $ node getProtectedWeapon.js
 
 `getTeamStatus.js` shows how to access the API challenge's team status API.
 
-`getProtectedWeapon.js` shows how to use the Apex security utilities to access protected weapon APIs.
+`getProtectedWeapon.js` shows how to use the APEX security utilities to access protected weapon APIs.
 
 ## API Challenge
 
 ### Objectives
-- To help participants familiarise Apex/Akana portal through an interactive team-based API game
+- To help participants familiarise APEX portal through an interactive team-based API game
 - Participants will know how to invoke an L0/L1/L2 secured API 
 - Participants will know how to create an App in APEX
 
