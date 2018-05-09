@@ -12,16 +12,19 @@
 
 ## Overview
 
-This is a hands-on session where participants will design and secure their APIs. You will also get to play a game where you will be able to apply what you have learned from our workshop.
+This is a hands-on session where participants will design and secure their APIs. You will also get to play a game where you will be able to apply what you have learned from our sharing session.
 
 ## Agenda
 
 | No | Sessions |
 | --- | --- |
-| 1 | Introduction to CM |
-| 2 | Consuming your first API |
-| 3 | Quick Break |
-| 4 | API Challenge |
+| 1 | Introduction to APEX|
+| 2 | RESTful API Design and Best Practices |
+| 3 | API Security |
+| 4 | Quick Break (Optional) 10 Minutes|
+| 5 | APEX Demo|
+| 6 | Tea Break 20 Minutes|
+| 7 | API Challenge|
 
 ## Prerequisites
 
