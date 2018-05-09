@@ -87,7 +87,9 @@ Team will need to gather weapons and attack other team's fortress.
 
 ### Instructions
 
-### APIs List (Take Note!)
+### API Documentation
+
+https://govtechstacksg.github.io/apex-api-workshop-2018
 
 ### Important links
 
