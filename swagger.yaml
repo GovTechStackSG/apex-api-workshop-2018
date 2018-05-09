@@ -1,0 +1,266 @@
+swagger: '2.0'
+info:
+  description: APEX DOTA APIs
+  version: 1.0.0
+  title: APEX DOTA APIs
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: training.api.gdshive.com
+basePath: /apex-dota
+tags:
+  - name: teams
+    description: Team statuses
+  - name: weapons
+    description: Get weapons
+  - name: blacksmith
+    description: Get weapon upgrades from the blacksmith
+  - name: attack
+    description: Attack other teams
+schemes:
+  - https
+paths:
+  /teams/status:
+    get:
+      tags:
+        - teams
+      summary: Get statuses for all teams
+      consumes:
+        - application/json
+      responses:
+        '200':
+          description: Array of statuses for all teams
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Team'
+  '/teams/{teamName}/status':
+    get:
+      tags:
+        - teams
+      summary: Get status for a single team
+      parameters:
+        - name: teamName
+          in: path
+          description: Name of team to get status of
+          required: true
+          type: string
+      responses:
+        '200':
+          description: JSON object containing information about a particular team
+          schema:
+            $ref: '#/definitions/Team'
+  '/weapons/{weaponName}':
+    get:
+      tags:
+        - weapons
+      summary: Obtain some ammo for the given weapon
+      responses:
+        '200':
+          description: >-
+            JSON object containing updated information for the given team,
+            including ammo count
+          schema:
+            $ref: '#/definitions/Team'
+        '404':
+          description: Weapon name or team name given is not found
+      parameters:
+        - name: weaponName
+          in: path
+          required: true
+          description: Name of weapon for which ammo is requested for
+          type: string
+        - name: teamName
+          in: query
+          required: true
+          description: Name of your team for which you are requesting the weapon
+          type: string
+  /blacksmith/levels/1:
+    get:
+      tags:
+        - blacksmith
+      summary: >-
+        Obtain a programming puzzle. The answer should be submitted to this
+        endpoint via POST, in order to obtain an Apex L1 secret
+      responses:
+        '200':
+          description: The puzzle to solve to obtain L1 secrets
+          schema:
+            $ref: '#/definitions/BlacksmithL1Question'
+        '404':
+          description: Invalid authentication level
+    post:
+      tags:
+        - blacksmith
+      summary: Submit the answer to the L1 programming puzzle
+      consumes:
+        - application/json
+      parameters:
+        - name: answer
+          in: body
+          required: true
+          description: Answer to the puzzle issued by the GET API.
+          schema:
+            $ref: '#/definitions/BlacksmithL1Answer'
+      responses:
+        '200':
+          description: Answer verified
+          schema:
+            $ref: '#/definitions/L1Secret'
+        '400':
+          description: No answer or invalid answer submitted
+        '404':
+          description: Invalid authentication level
+  /blacksmith/levels/2:
+    get:
+      tags:
+        - blacksmith
+      summary: >-
+        Obtain a programming puzzle that requires the answer to the L1 puzzle.
+        The answer should be submitted to this endpoint via POST, in order to
+        obtain an Apex L2 secret
+      responses:
+        '200':
+          description: The puzzle to solve to obtain L2 secrets
+          schema:
+            $ref: '#/definitions/BlacksmithL2Question'
+        '404':
+          description: Invalid authentication level
+    post:
+      tags:
+        - blacksmith
+      summary: Submit the answer to the L2 programming puzzle
+      consumes:
+        - application/json
+      parameters:
+        - name: answer
+          in: body
+          required: true
+          description: Answer to the puzzle issued by the GET API.
+          schema:
+            $ref: '#/definitions/BlacksmithL2Answer'
+      responses:
+        '200':
+          description: Answer verified
+          schema:
+            $ref: '#/definitions/L2Secret'
+        '400':
+          description: No answer or invalid answer submitted
+        '404':
+          description: Invalid authentication level
+  /attack:
+    post:
+      tags:
+        - attack
+      summary:
+        Use a specified weapon to attack another team, and bring down their
+        health
+      consumes:
+        - application/json
+      parameters:
+        - name: attack
+          in: body
+          required: true
+          description: >-
+            Specifies the attacker, defender, weapon used, and provides the
+            attacker password
+          schema:
+            $ref: '#/definitions/AttackRequest'
+      responses:
+        '200':
+          description: >-
+            JSON object including attacking and defending team's updated status,
+            weapon used, and how many damage was done during API call
+        '400':
+          description: >-
+            Attacking/defending team has no more health; or attacking team has
+            not enough ammo; or attacking team provided an invalid password
+definitions:
+  Team:
+    type: object
+    required:
+      - teamName
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+        example: team99
+      health:
+        type: integer
+        example: 1000
+      ammoL0:
+        type: integer
+        example: 5
+      ammoL1:
+        type: integer
+        example: 5
+      ammoL2:
+        type: integer
+        example: 5
+  BlacksmithL1Question:
+    type: object
+    required:
+      - text
+    properties:
+      text:
+        type: string
+        example: Reverse the given string
+      string:
+        type: string
+        example: hello
+  BlacksmithL1Answer:
+    type: object
+    required:
+      - answer
+    properties:
+      answer:
+        type: string
+        example: olleh
+  BlacksmithL2Question:
+    type: object
+    properties:
+      text:
+        type: string
+        example: Return a capitalized version of the L1 answer
+  BlacksmithL2Answer:
+    type: object
+    properties:
+      answer:
+        type: string
+        example: OLLEH
+  L1Secret:
+    type: object
+    properties:
+      appId:
+        type: string
+        example: my-apex-app-id
+      secret:
+        type: string
+        example: my-apex-app-secret
+  L2Secret:
+    type: object
+    properties:
+      certString:
+        type: string
+        description: >-
+          The PEM-formatted private key used for L2 authentication used for
+          obtaining L2 ammo
+        example: >-
+          ----BEGIN PRIVATE KEY-----\n{private-key-contents}\n-----END PRIVATE
+          KEY-----
+  AttackRequest:
+    type: object
+    properties:
+      attacker:
+        type: string
+        example: team00
+      defender:
+        type: string
+        example: team99
+      password:
+        type: string
+        example: only-the-attacker-can-know-this
+      weaponName:
+        type: string
+        example: snowball
