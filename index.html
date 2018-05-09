@@ -1,0 +1,670 @@
+<!doctype html>
+<html>
+  <head>
+    <title>APEX DOTA APIs</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>APEX DOTA APIs</h1>
+    <div class="app-desc">APEX DOTA APIs</div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/apex-dota</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Attack">Attack</a></h4>
+  <ul>
+  <li><a href="#attackPost"><code><span class="http-method">post</span> /attack</code></a></li>
+  </ul>
+  <h4><a href="#Blacksmith">Blacksmith</a></h4>
+  <ul>
+  <li><a href="#blacksmithLevels1Get"><code><span class="http-method">get</span> /blacksmith/levels/1</code></a></li>
+  <li><a href="#blacksmithLevels1Post"><code><span class="http-method">post</span> /blacksmith/levels/1</code></a></li>
+  <li><a href="#blacksmithLevels2Get"><code><span class="http-method">get</span> /blacksmith/levels/2</code></a></li>
+  <li><a href="#blacksmithLevels2Post"><code><span class="http-method">post</span> /blacksmith/levels/2</code></a></li>
+  </ul>
+  <h4><a href="#Teams">Teams</a></h4>
+  <ul>
+  <li><a href="#teamsStatusGet"><code><span class="http-method">get</span> /teams/status</code></a></li>
+  <li><a href="#teamsTeamNameStatusGet"><code><span class="http-method">get</span> /teams/{teamName}/status</code></a></li>
+  </ul>
+  <h4><a href="#Weapons">Weapons</a></h4>
+  <ul>
+  <li><a href="#weaponsWeaponNameGet"><code><span class="http-method">get</span> /weapons/{weaponName}</code></a></li>
+  </ul>
+
+  <h1><a name="Attack">Attack</a></h1>
+  <div class="method"><a name="attackPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /attack</code></pre></div>
+    <div class="method-summary">Use a specified weapon to attack another team, and bring down their health (<span class="nickname">attackPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">attack <a href="#AttackRequest">AttackRequest</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Specifies the attacker, defender, weapon used, and provides the attacker password </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    JSON object including attacking and defending team's updated status, weapon used, and how many damage was done during API call
+        <a href="#"></a>
+    <h4 class="field-label">400</h4>
+    Attacking/defending team has no more health; or attacking team has not enough ammo; or attacking team provided an invalid password
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Blacksmith">Blacksmith</a></h1>
+  <div class="method"><a name="blacksmithLevels1Get"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /blacksmith/levels/1</code></pre></div>
+    <div class="method-summary">Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret (<span class="nickname">blacksmithLevels1Get</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#BlacksmithL1Question">BlacksmithL1Question</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "string" : "hello",
+  "text" : "Reverse the given string"
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The puzzle to solve to obtain L1 secrets
+        <a href="#BlacksmithL1Question">BlacksmithL1Question</a>
+    <h4 class="field-label">404</h4>
+    Invalid authentication level
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="blacksmithLevels1Post"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /blacksmith/levels/1</code></pre></div>
+    <div class="method-summary">Submit the answer to the L1 programming puzzle (<span class="nickname">blacksmithLevels1Post</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">answer <a href="#BlacksmithL1Answer">BlacksmithL1Answer</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Answer to the puzzle issued by the GET API. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#L1Secret">L1Secret</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "appId" : "my-apex-app-id",
+  "secret" : "my-apex-app-secret"
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Answer verified
+        <a href="#L1Secret">L1Secret</a>
+    <h4 class="field-label">400</h4>
+    No answer or invalid answer submitted
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Invalid authentication level
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="blacksmithLevels2Get"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /blacksmith/levels/2</code></pre></div>
+    <div class="method-summary">Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret (<span class="nickname">blacksmithLevels2Get</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#BlacksmithL2Question">BlacksmithL2Question</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "text" : "Return a capitalized version of the L1 answer"
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    The puzzle to solve to obtain L2 secrets
+        <a href="#BlacksmithL2Question">BlacksmithL2Question</a>
+    <h4 class="field-label">404</h4>
+    Invalid authentication level
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="blacksmithLevels2Post"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /blacksmith/levels/2</code></pre></div>
+    <div class="method-summary">Submit the answer to the L2 programming puzzle (<span class="nickname">blacksmithLevels2Post</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">answer <a href="#BlacksmithL2Answer">BlacksmithL2Answer</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Answer to the puzzle issued by the GET API. </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#L2Secret">L2Secret</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "certString" : "----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----"
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Answer verified
+        <a href="#L2Secret">L2Secret</a>
+    <h4 class="field-label">400</h4>
+    No answer or invalid answer submitted
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Invalid authentication level
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Teams">Teams</a></h1>
+  <div class="method"><a name="teamsStatusGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams/status</code></pre></div>
+    <div class="method-summary">Get statuses for all teams (<span class="nickname">teamsStatusGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#Team">Team</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "name" : "team99",
+  "health" : 1000,
+  "ammoL1" : 5,
+  "id" : 0,
+  "ammoL0" : 5,
+  "ammoL2" : 5
+}, {
+  "name" : "team99",
+  "health" : 1000,
+  "ammoL1" : 5,
+  "id" : 0,
+  "ammoL0" : 5,
+  "ammoL2" : 5
+} ]</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Array of statuses for all teams
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="teamsTeamNameStatusGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams/{teamName}/status</code></pre></div>
+    <div class="method-summary">Get status for a single team (<span class="nickname">teamsTeamNameStatusGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">teamName (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of team to get status of </div>
+    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Team">Team</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "team99",
+  "health" : 1000,
+  "ammoL1" : 5,
+  "id" : 0,
+  "ammoL0" : 5,
+  "ammoL2" : 5
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    JSON object containing information about a particular team
+        <a href="#Team">Team</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Weapons">Weapons</a></h1>
+  <div class="method"><a name="weaponsWeaponNameGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/{weaponName}</code></pre></div>
+    <div class="method-summary">Obtain some ammo for the given weapon (<span class="nickname">weaponsWeaponNameGet</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">weaponName (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of weapon for which ammo is requested for </div>
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">teamName (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Name of your team for which you are requesting the weapon </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Team">Team</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "team99",
+  "health" : 1000,
+  "ammoL1" : 5,
+  "id" : 0,
+  "ammoL0" : 5,
+  "ammoL2" : 5
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    JSON object containing updated information for the given team, including ammo count
+        <a href="#Team">Team</a>
+    <h4 class="field-label">404</h4>
+    Weapon name or team name given is not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#AttackRequest"><code>AttackRequest</code> - </a></li>
+    <li><a href="#BlacksmithL1Answer"><code>BlacksmithL1Answer</code> - </a></li>
+    <li><a href="#BlacksmithL1Question"><code>BlacksmithL1Question</code> - </a></li>
+    <li><a href="#BlacksmithL2Answer"><code>BlacksmithL2Answer</code> - </a></li>
+    <li><a href="#BlacksmithL2Question"><code>BlacksmithL2Question</code> - </a></li>
+    <li><a href="#L1Secret"><code>L1Secret</code> - </a></li>
+    <li><a href="#L2Secret"><code>L2Secret</code> - </a></li>
+    <li><a href="#Team"><code>Team</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="AttackRequest"><code>AttackRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">attacker (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">defender (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">weaponName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="BlacksmithL1Answer"><code>BlacksmithL1Answer</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">answer </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="BlacksmithL1Question"><code>BlacksmithL1Question</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">text </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">string (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="BlacksmithL2Answer"><code>BlacksmithL2Answer</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">answer (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="BlacksmithL2Question"><code>BlacksmithL2Question</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="L1Secret"><code>L1Secret</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">appId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">secret (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="L2Secret"><code>L2Secret</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">certString (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The PEM-formatted private key used for L2 authentication used for obtaining L2 ammo </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Team"><code>Team</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">health (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">ammoL0 (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">ammoL1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">ammoL2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
