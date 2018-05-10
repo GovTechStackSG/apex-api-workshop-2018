@@ -1,13 +1,13 @@
 swagger: '2.0'
 info:
-  description: APEX DOTA APIs
+  description: APEX API Challenge API Documentation
   version: 1.0.0
-  title: APEX DOTA APIs
+  title: Defence of the APIs
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
 host: training.api.gdshive.com
-basePath: /apex-dota
+basePath: /apex-dota/api
 tags:
   - name: teams
     description: Team statuses
