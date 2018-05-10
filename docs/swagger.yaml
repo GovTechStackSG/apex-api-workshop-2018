@@ -25,6 +25,7 @@ paths:
       tags:
         - teams
       summary: Get statuses for all teams
+      description: Get information for all teams, including ammo count and health
       consumes:
         - application/json
       responses:
@@ -39,6 +40,7 @@ paths:
       tags:
         - teams
       summary: Get status for a single team
+      description: Get information for a single team, including ammo count and health
       parameters:
         - name: teamName
           in: path
@@ -51,10 +53,11 @@ paths:
           schema:
             $ref: '#/definitions/Team'
   '/weapons/snowball':
-    get:
+    put:
       tags:
         - weapons
-      summary: Obtain some snow balls for the given team
+      summary: Get snow balls (L0 authentication weapon)
+      description: Obtains some snow balls for the given team
       responses:
         '200':
           description: >-
@@ -71,10 +74,11 @@ paths:
           description: Name of your team for which you are requesting the weapon
           type: string
   '/weapons/cannonball':
-    get:
+    put:
       tags:
         - weapons
-      summary: (Apex L1 Auth) Obtain some cannon balls for the given team
+      summary: Get cannon balls (L1 authentication weapon)
+      description: Obtains some cannon balls for the given team
       responses:
         '200':
           description: >-
@@ -96,10 +100,11 @@ paths:
           required: true
           description: Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See https://github.com/GovTechSG/node-apex-api-security.
   '/weapons/dragonball':
-    get:
+    put:
       tags:
         - weapons
-      summary: (Apex L2 Auth) Obtain some dragon balls for the given team
+      summary: Get dragon balls (L2 authentication weapon)
+      description: Obtains some dragon balls for the given team)
       responses:
         '200':
           description: >-
@@ -124,7 +129,8 @@ paths:
     get:
       tags:
         - blacksmith
-      summary: >-
+      summary: Get L1 weapon API authentication challenge
+      description: >-
         Obtain a programming puzzle. The answer should be submitted to this
         endpoint via POST, in order to obtain an Apex L1 secret
       responses:
@@ -138,6 +144,7 @@ paths:
       tags:
         - blacksmith
       summary: Submit the answer to the L1 programming puzzle
+      description: If answer is correct, returns the required app ID and app secret for authentication to the /weapons/cannonball API
       consumes:
         - application/json
       parameters:
@@ -160,7 +167,8 @@ paths:
     get:
       tags:
         - blacksmith
-      summary: >-
+      summary: Get L2 weapon API authentication challenge
+      description: >-
         Obtain a programming puzzle that requires the answer to the L1 puzzle.
         The answer should be submitted to this endpoint via POST, in order to
         obtain an Apex L2 secret
@@ -175,6 +183,7 @@ paths:
       tags:
         - blacksmith
       summary: Submit the answer to the L2 programming puzzle
+      description: If answer is correct, returns the required private key in a JSON string for authentication to the /weapons/dragonball API
       consumes:
         - application/json
       parameters:
@@ -197,7 +206,8 @@ paths:
     post:
       tags:
         - attack
-      summary:
+      summary: Attack other teams with your weapons
+      description:
         Use a specified weapon to attack another team, and bring down their
         health
       consumes:
