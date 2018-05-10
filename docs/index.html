@@ -181,8 +181,12 @@ font-style: italic;
   <body>
   <h1>APEX DOTA APIs</h1>
     <div class="app-desc">APEX DOTA APIs</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
     <div class="app-desc">Version: 1.0.0</div>
     <div class="app-desc">BasePath:/apex-dota</div>
+    <div class="license-info">Apache 2.0</div>
+    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
   <h2>Access</h2>
 
   <h2><a name="__Methods">Methods</a></h2>
@@ -208,7 +212,9 @@ font-style: italic;
   </ul>
   <h4><a href="#Weapons">Weapons</a></h4>
   <ul>
-  <li><a href="#weaponsWeaponNameGet"><code><span class="http-method">get</span> /weapons/{weaponName}</code></a></li>
+  <li><a href="#weaponsCannonballGet"><code><span class="http-method">get</span> /weapons/cannonball</code></a></li>
+  <li><a href="#weaponsDragonballGet"><code><span class="http-method">get</span> /weapons/dragonball</code></a></li>
+  <li><a href="#weaponsSnowballGet"><code><span class="http-method">get</span> /weapons/snowball</code></a></li>
   </ul>
 
   <h1><a name="Attack">Attack</a></h1>
@@ -530,19 +536,117 @@ font-style: italic;
   </div> <!-- method -->
   <hr/>
   <h1><a name="Weapons">Weapons</a></h1>
-  <div class="method"><a name="weaponsWeaponNameGet"/>
+  <div class="method"><a name="weaponsCannonballGet"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/{weaponName}</code></pre></div>
-    <div class="method-summary">Obtain some ammo for the given weapon (<span class="nickname">weaponsWeaponNameGet</span>)</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/cannonball</code></pre></div>
+    <div class="method-summary">(Apex L1 Auth) Obtain some cannon balls for the given team (<span class="nickname">weaponsCannonballGet</span>)</div>
     <div class="method-notes"></div>
 
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">weaponName (required)</div>
 
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of weapon for which ammo is requested for </div>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
     </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">teamName (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Name of your team for which you are requesting the weapon </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Team">Team</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "team99",
+  "health" : 1000,
+  "ammoL1" : 5,
+  "id" : 0,
+  "ammoL0" : 5,
+  "ammoL2" : 5
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    JSON object containing updated information for the given team, including ammo count
+        <a href="#Team">Team</a>
+    <h4 class="field-label">404</h4>
+    Weapon name or team name given is not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="weaponsDragonballGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/dragonball</code></pre></div>
+    <div class="method-summary">(Apex L2 Auth) Obtain some dragon balls for the given team (<span class="nickname">weaponsDragonballGet</span>)</div>
+    <div class="method-notes"></div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">teamName (required)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Name of your team for which you are requesting the weapon </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#Team">Team</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "team99",
+  "health" : 1000,
+  "ammoL1" : 5,
+  "id" : 0,
+  "ammoL0" : 5,
+  "ammoL2" : 5
+}</code></pre>
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    JSON object containing updated information for the given team, including ammo count
+        <a href="#Team">Team</a>
+    <h4 class="field-label">404</h4>
+    Weapon name or team name given is not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="weaponsSnowballGet"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/snowball</code></pre></div>
+    <div class="method-summary">Obtain some snow balls for the given team (<span class="nickname">weaponsSnowballGet</span>)</div>
+    <div class="method-notes"></div>
+
 
 
 
