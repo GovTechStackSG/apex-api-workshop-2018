@@ -35,13 +35,13 @@
             <a href="#tag-weapons">weapons</a>
             <ul>
               <li>
-                <a href="#operation--weapons-snowball-get"> Obtain some snow balls for the given team </a>
+                <a href="#operation--weapons-snowball-put"> Get snow balls (L0 authentication weapon) </a>
               </li>
               <li>
-                <a href="#operation--weapons-cannonball-get"> (Apex L1 Auth) Obtain some cannon balls for the given team </a>
+                <a href="#operation--weapons-cannonball-put"> Get cannon balls (L1 authentication weapon) </a>
               </li>
               <li>
-                <a href="#operation--weapons-dragonball-get"> (Apex L2 Auth) Obtain some dragon balls for the given team </a>
+                <a href="#operation--weapons-dragonball-put"> Get dragon balls (L2 authentication weapon) </a>
               </li>
             </ul>
           </section>
@@ -49,13 +49,13 @@
             <a href="#tag-blacksmith">blacksmith</a>
             <ul>
               <li>
-                <a href="#operation--blacksmith-levels-1-get"> Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret </a>
+                <a href="#operation--blacksmith-levels-1-get"> Get L1 weapon API authentication challenge </a>
               </li>
               <li>
                 <a href="#operation--blacksmith-levels-1-post"> Submit the answer to the L1 programming puzzle </a>
               </li>
               <li>
-                <a href="#operation--blacksmith-levels-2-get"> Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret </a>
+                <a href="#operation--blacksmith-levels-2-get"> Get L2 weapon API authentication challenge </a>
               </li>
               <li>
                 <a href="#operation--blacksmith-levels-2-post"> Submit the answer to the L2 programming puzzle </a>
@@ -66,7 +66,7 @@
             <a href="#tag-attack">attack</a>
             <ul>
               <li>
-                <a href="#operation--attack-post"> Use a specified weapon to attack another team, and bring down their health </a>
+                <a href="#operation--attack-post"> Attack other teams with your weapons </a>
               </li>
             </ul>
           </section>
@@ -133,6 +133,13 @@
                 <section class="swagger-operation-path">
                   <span class="operation-method">GET</span>
                   <span class="operation-path">/teams/status</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Get information for all teams, including ammo count and health</p>
                 </section>
               </div>
             </div>
@@ -213,6 +220,13 @@
             </div>
             <div class="doc-row">
               <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Get information for a single team, including ammo count and health</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
                 <section class="swagger-request-params">
                   <div class="prop-row prop-group">
                     <div class="prop-name">
@@ -276,7 +290,7 @@
               <p>Get weapons</p>
             </div>
           </div>
-          <div id="operation--weapons-snowball-get" class="operation panel" data-traverse-target="operation--weapons-snowball-get">
+          <div id="operation--weapons-snowball-put" class="operation panel" data-traverse-target="operation--weapons-snowball-put">
             <!-- <section class="operation-tags row"> -->
             <!-- <div class="doc-copy"> -->
             <div class="operation-tags">
@@ -286,13 +300,20 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Obtain some snow balls for the given team</span>
+              <span class="operation-summary">Get snow balls (L0 authentication weapon)</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-path">
-                  <span class="operation-method">GET</span>
+                  <span class="operation-method">PUT</span>
                   <span class="operation-path">/weapons/snowball</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Obtains some snow balls for the given team</p>
                 </section>
               </div>
             </div>
@@ -363,7 +384,7 @@
               </div>
             </div>
           </div>
-          <div id="operation--weapons-cannonball-get" class="operation panel" data-traverse-target="operation--weapons-cannonball-get">
+          <div id="operation--weapons-cannonball-put" class="operation panel" data-traverse-target="operation--weapons-cannonball-put">
             <!-- <section class="operation-tags row"> -->
             <!-- <div class="doc-copy"> -->
             <div class="operation-tags">
@@ -373,13 +394,20 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">(Apex L1 Auth) Obtain some cannon balls for the given team</span>
+              <span class="operation-summary">Get cannon balls (L1 authentication weapon)</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-path">
-                  <span class="operation-method">GET</span>
+                  <span class="operation-method">PUT</span>
                   <span class="operation-path">/weapons/cannonball</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Obtains some cannon balls for the given team</p>
                 </section>
               </div>
             </div>
@@ -465,7 +493,7 @@
               </div>
             </div>
           </div>
-          <div id="operation--weapons-dragonball-get" class="operation panel" data-traverse-target="operation--weapons-dragonball-get">
+          <div id="operation--weapons-dragonball-put" class="operation panel" data-traverse-target="operation--weapons-dragonball-put">
             <!-- <section class="operation-tags row"> -->
             <!-- <div class="doc-copy"> -->
             <div class="operation-tags">
@@ -475,13 +503,20 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">(Apex L2 Auth) Obtain some dragon balls for the given team</span>
+              <span class="operation-summary">Get dragon balls (L2 authentication weapon)</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-path">
-                  <span class="operation-method">GET</span>
+                  <span class="operation-method">PUT</span>
                   <span class="operation-path">/weapons/dragonball</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Obtains some dragon balls for the given team)</p>
                 </section>
               </div>
             </div>
@@ -583,13 +618,20 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret</span>
+              <span class="operation-summary">Get L1 weapon API authentication challenge</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-path">
                   <span class="operation-method">GET</span>
                   <span class="operation-path">/blacksmith/levels/1</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret</p>
                 </section>
               </div>
             </div>
@@ -656,6 +698,13 @@
                 <section class="swagger-operation-path">
                   <span class="operation-method">POST</span>
                   <span class="operation-path">/blacksmith/levels/1</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>If answer is correct, returns the required app ID and app secret for authentication to the /weapons/cannonball API</p>
                 </section>
               </div>
             </div>
@@ -752,13 +801,20 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret</span>
+              <span class="operation-summary">Get L2 weapon API authentication challenge</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-path">
                   <span class="operation-method">GET</span>
                   <span class="operation-path">/blacksmith/levels/2</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret</p>
                 </section>
               </div>
             </div>
@@ -824,6 +880,13 @@
                 <section class="swagger-operation-path">
                   <span class="operation-method">POST</span>
                   <span class="operation-path">/blacksmith/levels/2</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>If answer is correct, returns the required private key in a JSON string for authentication to the /weapons/dragonball API</p>
                 </section>
               </div>
             </div>
@@ -925,13 +988,20 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Use a specified weapon to attack another team, and bring down their health</span>
+              <span class="operation-summary">Attack other teams with your weapons</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-path">
                   <span class="operation-method">POST</span>
                   <span class="operation-path">/attack</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Use a specified weapon to attack another team, and bring down their health</p>
                 </section>
               </div>
             </div>
