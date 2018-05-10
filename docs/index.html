@@ -1,774 +1,1339 @@
 <!doctype html>
-<html>
+<html class="no-js" lang="en">
   <head>
-    <title>APEX DOTA APIs</title>
-    <style type="text/css">
-      body {
-	font-family: Trebuchet MS, sans-serif;
-	font-size: 15px;
-	color: #444;
-	margin-right: 24px;
-}
-
-h1	{
-	font-size: 25px;
-}
-h2	{
-	font-size: 20px;
-}
-h3	{
-	font-size: 16px;
-	font-weight: bold;
-}
-hr	{
-	height: 1px;
-	border: 0;
-	color: #ddd;
-	background-color: #ddd;
-}
-
-.app-desc {
-  clear: both;
-  margin-left: 20px;
-}
-.param-name {
-  width: 100%;
-}
-.license-info {
-  margin-left: 20px;
-}
-
-.license-url {
-  margin-left: 20px;
-}
-
-.model {
-  margin: 0 0 0px 20px;
-}
-
-.method {
-  margin-left: 20px;
-}
-
-.method-notes	{
-	margin: 10px 0 20px 0;
-	font-size: 90%;
-	color: #555;
-}
-
-pre {
-  padding: 10px;
-  margin-bottom: 2px;
-}
-
-.http-method {
- text-transform: uppercase;
-}
-
-pre.get {
-  background-color: #0f6ab4;
-}
-
-pre.post {
-  background-color: #10a54a;
-}
-
-pre.put {
-  background-color: #c5862b;
-}
-
-pre.delete {
-  background-color: #a41e22;
-}
-
-.huge	{
-	color: #fff;
-}
-
-pre.example {
-  background-color: #f3f3f3;
-  padding: 10px;
-  border: 1px solid #ddd;
-}
-
-code {
-  white-space: pre;
-}
-
-.nickname {
-  font-weight: bold;
-}
-
-.method-path {
-  font-size: 1.5em;
-  background-color: #0f6ab4;
-}
-
-.up {
-  float:right;
-}
-
-.parameter {
-  width: 500px;
-}
-
-.param {
-  width: 500px;
-  padding: 10px 0 0 20px;
-  font-weight: bold;
-}
-
-.param-desc {
-  width: 700px;
-  padding: 0 0 0 20px;
-  color: #777;
-}
-
-.param-type {
-  font-style: italic;
-}
-
-.param-enum-header {
-width: 700px;
-padding: 0 0 0 60px;
-color: #777;
-font-weight: bold;
-}
-
-.param-enum {
-width: 700px;
-padding: 0 0 0 80px;
-color: #777;
-font-style: italic;
-}
-
-.field-label {
-  padding: 0;
-  margin: 0;
-  clear: both;
-}
-
-.field-items	{
-	padding: 0 0 15px 0;
-	margin-bottom: 15px;
-}
-
-.return-type {
-  clear: both;
-  padding-bottom: 10px;
-}
-
-.param-header {
-  font-weight: bold;
-}
-
-.method-tags {
-  text-align: right;
-}
-
-.method-tag {
-  background: none repeat scroll 0% 0% #24A600;
-  border-radius: 3px;
-  padding: 2px 10px;
-  margin: 2px;
-  color: #FFF;
-  display: inline-block;
-  text-decoration: none;
-}
-
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APEX DOTA APIs | API Reference</title>
+    <link rel="stylesheet" href="stylesheets/foundation.min.css" />
+    <link rel="stylesheet" href="stylesheets/spectacle.min.css" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="javascripts/foundation.js"></script> -->
+    <script src="javascripts/spectacle.min.js"></script>
   </head>
-  <body>
-  <h1>APEX DOTA APIs</h1>
-    <div class="app-desc">APEX DOTA APIs</div>
-    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
-    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
-    <div class="app-desc">Version: 1.0.0</div>
-    <div class="app-desc">BasePath:/apex-dota</div>
-    <div class="license-info">Apache 2.0</div>
-    <div class="license-url">http://www.apache.org/licenses/LICENSE-2.0.html</div>
-  <h2>Access</h2>
-
-  <h2><a name="__Methods">Methods</a></h2>
-  [ Jump to <a href="#__Models">Models</a> ]
-
-  <h3>Table of Contents </h3>
-  <div class="method-summary"></div>
-  <h4><a href="#Attack">Attack</a></h4>
-  <ul>
-  <li><a href="#attackPost"><code><span class="http-method">post</span> /attack</code></a></li>
-  </ul>
-  <h4><a href="#Blacksmith">Blacksmith</a></h4>
-  <ul>
-  <li><a href="#blacksmithLevels1Get"><code><span class="http-method">get</span> /blacksmith/levels/1</code></a></li>
-  <li><a href="#blacksmithLevels1Post"><code><span class="http-method">post</span> /blacksmith/levels/1</code></a></li>
-  <li><a href="#blacksmithLevels2Get"><code><span class="http-method">get</span> /blacksmith/levels/2</code></a></li>
-  <li><a href="#blacksmithLevels2Post"><code><span class="http-method">post</span> /blacksmith/levels/2</code></a></li>
-  </ul>
-  <h4><a href="#Teams">Teams</a></h4>
-  <ul>
-  <li><a href="#teamsStatusGet"><code><span class="http-method">get</span> /teams/status</code></a></li>
-  <li><a href="#teamsTeamNameStatusGet"><code><span class="http-method">get</span> /teams/{teamName}/status</code></a></li>
-  </ul>
-  <h4><a href="#Weapons">Weapons</a></h4>
-  <ul>
-  <li><a href="#weaponsCannonballGet"><code><span class="http-method">get</span> /weapons/cannonball</code></a></li>
-  <li><a href="#weaponsDragonballGet"><code><span class="http-method">get</span> /weapons/dragonball</code></a></li>
-  <li><a href="#weaponsSnowballGet"><code><span class="http-method">get</span> /weapons/snowball</code></a></li>
-  </ul>
-
-  <h1><a name="Attack">Attack</a></h1>
-  <div class="method"><a name="attackPost"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /attack</code></pre></div>
-    <div class="method-summary">Use a specified weapon to attack another team, and bring down their health (<span class="nickname">attackPost</span>)</div>
-    <div class="method-notes"></div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">attack <a href="#AttackRequest">AttackRequest</a> (required)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Specifies the attacker, defender, weapon used, and provides the attacker password </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    JSON object including attacking and defending team's updated status, weapon used, and how many damage was done during API call
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Attacking/defending team has no more health; or attacking team has not enough ammo; or attacking team provided an invalid password
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <h1><a name="Blacksmith">Blacksmith</a></h1>
-  <div class="method"><a name="blacksmithLevels1Get"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blacksmith/levels/1</code></pre></div>
-    <div class="method-summary">Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret (<span class="nickname">blacksmithLevels1Get</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#BlacksmithL1Question">BlacksmithL1Question</a>
-      
+  <body id="spectacle">
+    <div id="page" class="drawer-layout drawer-slide-right-large">
+      <div id="sidebar">
+        <button class="close-button" aria-label="Close menu" type="button" data-drawer-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <nav id="nav" role="navigation">
+          <h5>Topics</h5>
+          <a href="#introduction">Introduction</a>
+          <h5>Operations</h5>
+          <section>
+            <a href="#tag-teams">teams</a>
+            <ul>
+              <li>
+                <a href="#operation--teams-status-get"> Get statuses for all teams </a>
+              </li>
+              <li>
+                <a href="#operation--teams--teamName--status-get"> Get status for a single team </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-weapons">weapons</a>
+            <ul>
+              <li>
+                <a href="#operation--weapons-snowball-get"> Obtain some snow balls for the given team </a>
+              </li>
+              <li>
+                <a href="#operation--weapons-cannonball-get"> (Apex L1 Auth) Obtain some cannon balls for the given team </a>
+              </li>
+              <li>
+                <a href="#operation--weapons-dragonball-get"> (Apex L2 Auth) Obtain some dragon balls for the given team </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-blacksmith">blacksmith</a>
+            <ul>
+              <li>
+                <a href="#operation--blacksmith-levels-1-get"> Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret </a>
+              </li>
+              <li>
+                <a href="#operation--blacksmith-levels-1-post"> Submit the answer to the L1 programming puzzle </a>
+              </li>
+              <li>
+                <a href="#operation--blacksmith-levels-2-get"> Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret </a>
+              </li>
+              <li>
+                <a href="#operation--blacksmith-levels-2-post"> Submit the answer to the L2 programming puzzle </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-attack">attack</a>
+            <ul>
+              <li>
+                <a href="#operation--attack-post"> Use a specified weapon to attack another team, and bring down their health </a>
+              </li>
+            </ul>
+          </section>
+          <h5>Schema Definitions</h5>
+          <a href="#definition-Team"> Team </a>
+          <a href="#definition-BlacksmithL1Question"> BlacksmithL1Question </a>
+          <a href="#definition-BlacksmithL1Answer"> BlacksmithL1Answer </a>
+          <a href="#definition-BlacksmithL2Question"> BlacksmithL2Question </a>
+          <a href="#definition-BlacksmithL2Answer"> BlacksmithL2Answer </a>
+          <a href="#definition-L1Secret"> L1Secret </a>
+          <a href="#definition-L2Secret"> L2Secret </a>
+          <a href="#definition-AttackRequest"> AttackRequest </a>
+        </nav>
+      </div>
+      <div id="docs" class="row collapse expanded drawer" data-drawer>
+        <button class="floating-menu-icon" type="button" data-drawer-slide="right">
+          <span class="hamburger"></span>
+        </button>
+        <div class="example-box doc-content"></div>
+        <article>
+          <h1 class="doc-title">APEX DOTA APIs
+            <span>API Reference</span>
+          </h1>
+          <div id="introduction" data-traverse-target="introduction">
+            <div class="doc-row">
+              <div class="doc-copy">
+                <p>APEX DOTA APIs</p>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>API Endpoint</h5>
+                  <!-- <div class="hljs"> --><pre><code>https://training.api.gdshive.com/apex-dota</code></pre>
+                  <!-- </div> -->
+                  <h5>Schemes:
+                    <span>https</span>
+                  </h5>
+                  <h5>Version:
+                    <span>1.0.0</span>
+                  </h5>
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-teams" class="swagger-summary-tag" data-traverse-target="tag-teams">teams</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Team statuses</p>
+            </div>
+          </div>
+          <div id="operation--teams-status-get" class="operation panel" data-traverse-target="operation--teams-status-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-teams">teams</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Get statuses for all teams</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/teams/status</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/Team">Team</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Array of statuses for all teams</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <span class="json-property-type">
+                        <span class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/Team">Team</a>
+                        </span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">[
+  {
+    <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+    <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+    <span class="hljs-attr">&quot;health&quot;</span>: <span class="hljs-number">1000</span>,
+    <span class="hljs-attr">&quot;ammoL0&quot;</span>: <span class="hljs-number">5</span>,
+    <span class="hljs-attr">&quot;ammoL1&quot;</span>: <span class="hljs-number">5</span>,
+    <span class="hljs-attr">&quot;ammoL2&quot;</span>: <span class="hljs-number">5</span>
+  }
+]
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--teams--teamName--status-get" class="operation panel" data-traverse-target="operation--teams--teamName--status-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-teams">teams</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Get status for a single team</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/teams/{teamName}/status</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">teamName</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in path </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Name of team to get status of</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Team">Team</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>JSON object containing information about a particular team</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;health&quot;</span>: <span class="hljs-number">1000</span>,
+  <span class="hljs-attr">&quot;ammoL0&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL1&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL2&quot;</span>: <span class="hljs-number">5</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-weapons" class="swagger-summary-tag" data-traverse-target="tag-weapons">weapons</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Get weapons</p>
+            </div>
+          </div>
+          <div id="operation--weapons-snowball-get" class="operation panel" data-traverse-target="operation--weapons-snowball-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-weapons">weapons</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Obtain some snow balls for the given team</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/weapons/snowball</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">teamName</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in query </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Name of your team for which you are requesting the weapon</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Team">Team</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>JSON object containing updated information for the given team, including ammo count</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Weapon name or team name given is not found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;health&quot;</span>: <span class="hljs-number">1000</span>,
+  <span class="hljs-attr">&quot;ammoL0&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL1&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL2&quot;</span>: <span class="hljs-number">5</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--weapons-cannonball-get" class="operation panel" data-traverse-target="operation--weapons-cannonball-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-weapons">weapons</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">(Apex L1 Auth) Obtain some cannon balls for the given team</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/weapons/cannonball</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">teamName</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in query </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Name of your team for which you are requesting the weapon</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">Authorization</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in header </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See
+                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a>.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Team">Team</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>JSON object containing updated information for the given team, including ammo count</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Weapon name or team name given is not found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;health&quot;</span>: <span class="hljs-number">1000</span>,
+  <span class="hljs-attr">&quot;ammoL0&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL1&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL2&quot;</span>: <span class="hljs-number">5</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--weapons-dragonball-get" class="operation panel" data-traverse-target="operation--weapons-dragonball-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-weapons">weapons</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">(Apex L2 Auth) Obtain some dragon balls for the given team</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/weapons/dragonball</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">teamName</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in query </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Name of your team for which you are requesting the weapon</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">Authorization</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in header </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Apex L2 signature token, signed with an Apex app ID and private key with access to the API. See
+                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a>.</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/Team">Team</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>JSON object containing updated information for the given team, including ammo count</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Weapon name or team name given is not found</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;health&quot;</span>: <span class="hljs-number">1000</span>,
+  <span class="hljs-attr">&quot;ammoL0&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL1&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL2&quot;</span>: <span class="hljs-number">5</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-blacksmith" class="swagger-summary-tag" data-traverse-target="tag-blacksmith">blacksmith</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Get weapon upgrades from the blacksmith</p>
+            </div>
+          </div>
+          <div id="operation--blacksmith-levels-1-get" class="operation panel" data-traverse-target="operation--blacksmith-levels-1-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-blacksmith">blacksmith</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/blacksmith/levels/1</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/BlacksmithL1Question">BlacksmithL1Question</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>The puzzle to solve to obtain L1 secrets</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Invalid authentication level</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Reverse the given string&quot;</span>,
+  <span class="hljs-attr">&quot;string&quot;</span>: <span class="hljs-string">&quot;hello&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--blacksmith-levels-1-post" class="operation panel" data-traverse-target="operation--blacksmith-levels-1-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-blacksmith">blacksmith</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Submit the answer to the L1 programming puzzle</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/blacksmith/levels/1</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/BlacksmithL1Answer">BlacksmithL1Answer</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>Answer to the puzzle issued by the GET API.</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;olleh&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/L1Secret">L1Secret</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Answer verified</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">400 Bad Request</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>No answer or invalid answer submitted</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Invalid authentication level</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;appId&quot;</span>: <span class="hljs-string">&quot;my-apex-app-id&quot;</span>,
+  <span class="hljs-attr">&quot;secret&quot;</span>: <span class="hljs-string">&quot;my-apex-app-secret&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--blacksmith-levels-2-get" class="operation panel" data-traverse-target="operation--blacksmith-levels-2-get">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-blacksmith">blacksmith</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">GET</span>
+                  <span class="operation-path">/blacksmith/levels/2</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy"> </div>
+              <div class="doc-examples"></div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/BlacksmithL2Question">BlacksmithL2Question</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>The puzzle to solve to obtain L2 secrets</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Invalid authentication level</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Return a capitalized version of the L1 answer&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation--blacksmith-levels-2-post" class="operation panel" data-traverse-target="operation--blacksmith-levels-2-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-blacksmith">blacksmith</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Submit the answer to the L2 programming puzzle</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/blacksmith/levels/2</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/BlacksmithL2Answer">BlacksmithL2Answer</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>Answer to the puzzle issued by the GET API.</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;OLLEH&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                      <div class="prop-ref">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/L2Secret">L2Secret</a>
+                        </span>
+                      </div>
+                      <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
+                    </div>
+                    <div class="prop-value">
+                      <p>Answer verified</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">400 Bad Request</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>No answer or invalid answer submitted</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">404 Not Found</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Invalid authentication level</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;certString&quot;</span>: <span class="hljs-string">&quot;----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-attack" class="swagger-summary-tag" data-traverse-target="tag-attack">attack</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Attack other teams</p>
+            </div>
+          </div>
+          <div id="operation--attack-post" class="operation panel" data-traverse-target="operation--attack-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-attack">attack</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Use a specified weapon to attack another team, and bring down their health</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-path">
+                  <span class="operation-method">POST</span>
+                  <span class="operation-path">/attack</span>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body">
+                  <div class="prop-row">
+                    <div class="prop-name">
+                      <div class="swagger-request-model">
+                        <span class="">
+                          <a class="json-schema-ref" href="#/definitions/AttackRequest">AttackRequest</a>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value columns small-6">
+                      <!-- <div class="swagger-request-description"> -->
+                      <p>Specifies the attacker, defender, weapon used, and provides the attacker password</p>
+                      <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Request Content-Types:
+                    <span>application/json</span>
+                  </h5>
+                  <h5>Request Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;attacker&quot;</span>: <span class="hljs-string">&quot;team00&quot;</span>,
+  <span class="hljs-attr">&quot;defender&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;password&quot;</span>: <span class="hljs-string">&quot;only-the-attacker-can-know-this&quot;</span>,
+  <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>JSON object including attacking and defending team&#39;s updated status, weapon used, and how many damage was done during API call</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">400 Bad Request</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Attacking/defending team has no more health; or attacking team has not enough ammo; or attacking team provided an invalid password</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples"> </div>
+            </div>
+          </div>
+          <h1>Schema Definitions</h1>
+          <div id="definition-Team" class="definition panel" data-traverse-target="definition-Team">
+            <h2 class="panel-title">
+              <a name="/definitions/Team"></a>Team: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="id">
+                      <span class="json-property-name">id:</span>
+                      <span class="json-property-type">integer</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="name">
+                      <span class="json-property-name">name:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="health">
+                      <span class="json-property-name">health:</span>
+                      <span class="json-property-type">integer</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="ammoL0">
+                      <span class="json-property-name">ammoL0:</span>
+                      <span class="json-property-type">integer</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="ammoL1">
+                      <span class="json-property-name">ammoL1:</span>
+                      <span class="json-property-type">integer</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="ammoL2">
+                      <span class="json-property-name">ammoL2:</span>
+                      <span class="json-property-type">integer</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;health&quot;</span>: <span class="hljs-number">1000</span>,
+  <span class="hljs-attr">&quot;ammoL0&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL1&quot;</span>: <span class="hljs-number">5</span>,
+  <span class="hljs-attr">&quot;ammoL2&quot;</span>: <span class="hljs-number">5</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-BlacksmithL1Question" class="definition panel" data-traverse-target="definition-BlacksmithL1Question">
+            <h2 class="panel-title">
+              <a name="/definitions/BlacksmithL1Question"></a>BlacksmithL1Question: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="text">
+                      <span class="json-property-name">text:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                    <dt data-property-name="string">
+                      <span class="json-property-name">string:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Reverse the given string&quot;</span>,
+  <span class="hljs-attr">&quot;string&quot;</span>: <span class="hljs-string">&quot;hello&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-BlacksmithL1Answer" class="definition panel" data-traverse-target="definition-BlacksmithL1Answer">
+            <h2 class="panel-title">
+              <a name="/definitions/BlacksmithL1Answer"></a>BlacksmithL1Answer: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="answer">
+                      <span class="json-property-name">answer:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;olleh&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-BlacksmithL2Question" class="definition panel" data-traverse-target="definition-BlacksmithL2Question">
+            <h2 class="panel-title">
+              <a name="/definitions/BlacksmithL2Question"></a>BlacksmithL2Question: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="text">
+                      <span class="json-property-name">text:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Return a capitalized version of the L1 answer&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-BlacksmithL2Answer" class="definition panel" data-traverse-target="definition-BlacksmithL2Answer">
+            <h2 class="panel-title">
+              <a name="/definitions/BlacksmithL2Answer"></a>BlacksmithL2Answer: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="answer">
+                      <span class="json-property-name">answer:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;OLLEH&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-L1Secret" class="definition panel" data-traverse-target="definition-L1Secret">
+            <h2 class="panel-title">
+              <a name="/definitions/L1Secret"></a>L1Secret: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="appId">
+                      <span class="json-property-name">appId:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="secret">
+                      <span class="json-property-name">secret:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;appId&quot;</span>: <span class="hljs-string">&quot;my-apex-app-id&quot;</span>,
+  <span class="hljs-attr">&quot;secret&quot;</span>: <span class="hljs-string">&quot;my-apex-app-secret&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-L2Secret" class="definition panel" data-traverse-target="definition-L2Secret">
+            <h2 class="panel-title">
+              <a name="/definitions/L2Secret"></a>L2Secret: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="certString" class="has-description">
+                      <span class="json-property-name">certString:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>The PEM-formatted private key used for L2 authentication used for obtaining L2 ammo</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;certString&quot;</span>: <span class="hljs-string">&quot;----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-AttackRequest" class="definition panel" data-traverse-target="definition-AttackRequest">
+            <h2 class="panel-title">
+              <a name="/definitions/AttackRequest"></a>AttackRequest: object
+              <!-- <span class="json-property-type"><span class="json-property-type">object</span>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="attacker">
+                      <span class="json-property-name">attacker:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="defender">
+                      <span class="json-property-name">defender:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="password">
+                      <span class="json-property-name">password:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="weaponName">
+                      <span class="json-property-name">weaponName:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
+  <span class="hljs-attr">&quot;attacker&quot;</span>: <span class="hljs-string">&quot;team00&quot;</span>,
+  <span class="hljs-attr">&quot;defender&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
+  <span class="hljs-attr">&quot;password&quot;</span>: <span class="hljs-string">&quot;only-the-attacker-can-know-this&quot;</span>,
+  <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>
+}
+</code></pre>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div class="doc-row no-margin">
+            <div class="doc-copy doc-separator">
+              <a class="powered-by" href="https://sourcey.com/spectacle">Documentation by
+                <span>Spectacle</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "string" : "hello",
-  "text" : "Reverse the given string"
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The puzzle to solve to obtain L1 secrets
-        <a href="#BlacksmithL1Question">BlacksmithL1Question</a>
-    <h4 class="field-label">404</h4>
-    Invalid authentication level
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="blacksmithLevels1Post"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /blacksmith/levels/1</code></pre></div>
-    <div class="method-summary">Submit the answer to the L1 programming puzzle (<span class="nickname">blacksmithLevels1Post</span>)</div>
-    <div class="method-notes"></div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">answer <a href="#BlacksmithL1Answer">BlacksmithL1Answer</a> (required)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Answer to the puzzle issued by the GET API. </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#L1Secret">L1Secret</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "appId" : "my-apex-app-id",
-  "secret" : "my-apex-app-secret"
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Answer verified
-        <a href="#L1Secret">L1Secret</a>
-    <h4 class="field-label">400</h4>
-    No answer or invalid answer submitted
-        <a href="#"></a>
-    <h4 class="field-label">404</h4>
-    Invalid authentication level
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="blacksmithLevels2Get"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /blacksmith/levels/2</code></pre></div>
-    <div class="method-summary">Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret (<span class="nickname">blacksmithLevels2Get</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#BlacksmithL2Question">BlacksmithL2Question</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "text" : "Return a capitalized version of the L1 answer"
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    The puzzle to solve to obtain L2 secrets
-        <a href="#BlacksmithL2Question">BlacksmithL2Question</a>
-    <h4 class="field-label">404</h4>
-    Invalid authentication level
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="blacksmithLevels2Post"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /blacksmith/levels/2</code></pre></div>
-    <div class="method-summary">Submit the answer to the L2 programming puzzle (<span class="nickname">blacksmithLevels2Post</span>)</div>
-    <div class="method-notes"></div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">answer <a href="#BlacksmithL2Answer">BlacksmithL2Answer</a> (required)</div>
-
-      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Answer to the puzzle issued by the GET API. </div>
-
-    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#L2Secret">L2Secret</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "certString" : "----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----"
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Answer verified
-        <a href="#L2Secret">L2Secret</a>
-    <h4 class="field-label">400</h4>
-    No answer or invalid answer submitted
-        <a href="#"></a>
-    <h4 class="field-label">404</h4>
-    Invalid authentication level
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <h1><a name="Teams">Teams</a></h1>
-  <div class="method"><a name="teamsStatusGet"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams/status</code></pre></div>
-    <div class="method-summary">Get statuses for all teams (<span class="nickname">teamsStatusGet</span>)</div>
-    <div class="method-notes"></div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="heaader">Content-Type</span> request header:
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      array[<a href="#Team">Team</a>]
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
-  "name" : "team99",
-  "health" : 1000,
-  "ammoL1" : 5,
-  "id" : 0,
-  "ammoL0" : 5,
-  "ammoL2" : 5
-}, {
-  "name" : "team99",
-  "health" : 1000,
-  "ammoL1" : 5,
-  "id" : 0,
-  "ammoL0" : 5,
-  "ammoL2" : 5
-} ]</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    Array of statuses for all teams
-        
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="teamsTeamNameStatusGet"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /teams/{teamName}/status</code></pre></div>
-    <div class="method-summary">Get status for a single team (<span class="nickname">teamsTeamNameStatusGet</span>)</div>
-    <div class="method-notes"></div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">teamName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Name of team to get status of </div>
-    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Team">Team</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "team99",
-  "health" : 1000,
-  "ammoL1" : 5,
-  "id" : 0,
-  "ammoL0" : 5,
-  "ammoL2" : 5
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    JSON object containing information about a particular team
-        <a href="#Team">Team</a>
-  </div> <!-- method -->
-  <hr/>
-  <h1><a name="Weapons">Weapons</a></h1>
-  <div class="method"><a name="weaponsCannonballGet"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/cannonball</code></pre></div>
-    <div class="method-summary">(Apex L1 Auth) Obtain some cannon balls for the given team (<span class="nickname">weaponsCannonballGet</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-    <h3 class="field-label">Request headers</h3>
-    <div class="field-items">
-      
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">teamName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Name of your team for which you are requesting the weapon </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Team">Team</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "team99",
-  "health" : 1000,
-  "ammoL1" : 5,
-  "id" : 0,
-  "ammoL0" : 5,
-  "ammoL2" : 5
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    JSON object containing updated information for the given team, including ammo count
-        <a href="#Team">Team</a>
-    <h4 class="field-label">404</h4>
-    Weapon name or team name given is not found
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="weaponsDragonballGet"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/dragonball</code></pre></div>
-    <div class="method-summary">(Apex L2 Auth) Obtain some dragon balls for the given team (<span class="nickname">weaponsDragonballGet</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-    <h3 class="field-label">Request headers</h3>
-    <div class="field-items">
-      
-    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">teamName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Name of your team for which you are requesting the weapon </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Team">Team</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "team99",
-  "health" : 1000,
-  "ammoL1" : 5,
-  "id" : 0,
-  "ammoL0" : 5,
-  "ammoL2" : 5
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    JSON object containing updated information for the given team, including ammo count
-        <a href="#Team">Team</a>
-    <h4 class="field-label">404</h4>
-    Weapon name or team name given is not found
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="weaponsSnowballGet"/>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /weapons/snowball</code></pre></div>
-    <div class="method-summary">Obtain some snow balls for the given team (<span class="nickname">weaponsSnowballGet</span>)</div>
-    <div class="method-notes"></div>
-
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">teamName (required)</div>
-
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Name of your team for which you are requesting the weapon </div>
-    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#Team">Team</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "name" : "team99",
-  "health" : 1000,
-  "ammoL1" : 5,
-  "id" : 0,
-  "ammoL0" : 5,
-  "ammoL2" : 5
-}</code></pre>
-
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    JSON object containing updated information for the given team, including ammo count
-        <a href="#Team">Team</a>
-    <h4 class="field-label">404</h4>
-    Weapon name or team name given is not found
-        <a href="#"></a>
-  </div> <!-- method -->
-  <hr/>
-
-  <h2><a name="__Models">Models</a></h2>
-  [ Jump to <a href="#__Methods">Methods</a> ]
-
-  <h3>Table of Contents</h3>
-  <ol>
-    <li><a href="#AttackRequest"><code>AttackRequest</code> - </a></li>
-    <li><a href="#BlacksmithL1Answer"><code>BlacksmithL1Answer</code> - </a></li>
-    <li><a href="#BlacksmithL1Question"><code>BlacksmithL1Question</code> - </a></li>
-    <li><a href="#BlacksmithL2Answer"><code>BlacksmithL2Answer</code> - </a></li>
-    <li><a href="#BlacksmithL2Question"><code>BlacksmithL2Question</code> - </a></li>
-    <li><a href="#L1Secret"><code>L1Secret</code> - </a></li>
-    <li><a href="#L2Secret"><code>L2Secret</code> - </a></li>
-    <li><a href="#Team"><code>Team</code> - </a></li>
-  </ol>
-
-  <div class="model">
-    <h3><a name="AttackRequest"><code>AttackRequest</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">attacker (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">defender (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">weaponName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="BlacksmithL1Answer"><code>BlacksmithL1Answer</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">answer </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="BlacksmithL1Question"><code>BlacksmithL1Question</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">text </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">string (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="BlacksmithL2Answer"><code>BlacksmithL2Answer</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">answer (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="BlacksmithL2Question"><code>BlacksmithL2Question</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">text (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="L1Secret"><code>L1Secret</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">appId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">secret (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="L2Secret"><code>L2Secret</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">certString (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The PEM-formatted private key used for L2 authentication used for obtaining L2 ammo </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="Team"><code>Team</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">health (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">ammoL0 (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">ammoL1 (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">ammoL2 (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
   </body>
 </html>
