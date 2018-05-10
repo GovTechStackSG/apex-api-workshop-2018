@@ -50,11 +50,11 @@ paths:
           description: JSON object containing information about a particular team
           schema:
             $ref: '#/definitions/Team'
-  '/weapons/{weaponName}':
+  '/weapons/snowball':
     get:
       tags:
         - weapons
-      summary: Obtain some ammo for the given weapon
+      summary: Obtain some snow balls for the given team
       responses:
         '200':
           description: >-
@@ -65,16 +65,61 @@ paths:
         '404':
           description: Weapon name or team name given is not found
       parameters:
-        - name: weaponName
-          in: path
-          required: true
-          description: Name of weapon for which ammo is requested for
-          type: string
         - name: teamName
           in: query
           required: true
           description: Name of your team for which you are requesting the weapon
           type: string
+  '/weapons/cannonball':
+    get:
+      tags:
+        - weapons
+      summary: (Apex L1 Auth) Obtain some cannon balls for the given team
+      responses:
+        '200':
+          description: >-
+            JSON object containing updated information for the given team,
+            including ammo count
+          schema:
+            $ref: '#/definitions/Team'
+        '404':
+          description: Weapon name or team name given is not found
+      parameters:
+        - name: teamName
+          in: query
+          required: true
+          description: Name of your team for which you are requesting the weapon
+          type: string
+        - in: header
+          name: Authorization
+          type: string
+          required: true
+          description: Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See https://github.com/GovTechSG/node-apex-api-security.
+  '/weapons/dragonball':
+    get:
+      tags:
+        - weapons
+      summary: (Apex L2 Auth) Obtain some dragon balls for the given team
+      responses:
+        '200':
+          description: >-
+            JSON object containing updated information for the given team,
+            including ammo count
+          schema:
+            $ref: '#/definitions/Team'
+        '404':
+          description: Weapon name or team name given is not found
+      parameters:
+        - name: teamName
+          in: query
+          required: true
+          description: Name of your team for which you are requesting the weapon
+          type: string
+        - in: header
+          name: Authorization
+          type: string
+          required: true
+          description: Apex L2 signature token, signed with an Apex app ID and private key with access to the API. See https://github.com/GovTechSG/node-apex-api-security.
   /blacksmith/levels/1:
     get:
       tags:
