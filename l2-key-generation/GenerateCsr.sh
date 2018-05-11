@@ -2,13 +2,13 @@
 
 # This file is used to generate a private key and csr for calling L2 secured applications on Apex.
 
-# Certificate properties
+# Certificate properties, with example values
 COMMON_NAME="Apex L2 Cert"
 ORGANIZATION_UNIT="Application Infrastructure"
-ORGANIZATION_NAME=Govtech
+ORGANIZATION_NAME=GovTech
 LOCALITY_NAME=Hive
 STATE_NAME=Singapore
-EMAIL="email@example.com"
+EMAIL=email@example.com
 
 if [ $# -eq 2 ]
 then
