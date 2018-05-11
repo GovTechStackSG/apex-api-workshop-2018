@@ -8,28 +8,28 @@ ORGANIZATION_UNIT="Application Infrastructure"
 ORGANIZATION_NAME=Govtech
 LOCALITY_NAME=Hive
 STATE_NAME=Singapore
+EMAIL="email@example.com"
 
 if [ $# -eq 2 ]
 then
     FILENAME=$1
     KEYPHRASE=$2
 
-    openssl genrsa -aes256 -out ${FILENAME} -passout pass:${KEYPHRASE} 2048
+    openssl genpkey -algorithm RSA -out ${FILENAME} -pkeyopt rsa_keygen_bits:2048 -aes256 -pass pass:${KEYPHRASE}
 elif [ $# -eq 1 ]
 then
     FILENAME=$1
 
-    openssl genrsa -out ${FILENAME} 2048
+    openssl genpkey -algorithm RSA -out ${FILENAME} -pkeyopt rsa_keygen_bits:2048
 else
+    echo "Generates a 2048-bit RSA private key plus CSR with specified key file name. If KEYPASS is provided, the key would be AES256-encrypted."
     echo "Usage: GenerateCsr.sh KEY_FILE_NAME [KEYPASS]"
     exit 1
 fi
 
-read -p "Email: " EMAIL
-
 # Generate Signing Request
-openssl req -new \
+openssl req -new -sha256\
     -key ${FILENAME} \
     -out ${FILENAME}.csr \
     -passin pass:${KEYPHRASE} \
-    -sha256 -subj "/C=SG/ST=${STATE_NAME}/L=${LOCALITY_NAME}/O=${ORGANIZATION_NAME}/OU=${ORGANIZATION_UNIT}/CN=${COMMON_NAME}/emailAddress=${EMAIL}"
+    -subj "/C=SG/ST=${STATE_NAME}/L=${LOCALITY_NAME}/O=${ORGANIZATION_NAME}/OU=${ORGANIZATION_UNIT}/CN=${COMMON_NAME}/emailAddress=${EMAIL}"
