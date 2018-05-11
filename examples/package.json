@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "superagent": "^3.8.2",
-    "node-apex-api-security": "git+https://github.com/GovTechSG/node-apex-api-security.git"
+    "node-apex-api-security": "^0.7.4",
+    "superagent": "^3.8.2"
   },
   "repository": {
     "type": "git",
