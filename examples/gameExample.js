@@ -80,11 +80,15 @@ function getCannonBall(teamName) {
     // The API gateway's API endpoint, for signing
     let signingEndpoint = `${signingHost}/api/weapons/cannonball`;
 
-    // Required parameters for the ApiSigningUtil, in alphabetical order
-    const appId = 'apex-dota-get-l1-weapon'; // App ID, set at Apex gateway
-    const authPrefix = 'apex_l1_eg'; // Prefix, depending on l1/l2 or ig/eg
-    const httpMethod = 'put';
-    const secret = '67c23a216c04d9805d2b53400758883db3d3d30e'; // App secret, set at Apex gateway
+    // Required parameters for the ApiSigningUtil
+
+    // Use the blacksmith APIs to obtain the following 2 L1 authentication parameters
+    const appId = ''; // Apex App ID set at Apex gateway.
+    const secret = ''; // App secret, set at Apex gateway.
+
+    // Prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway
+    const authPrefix = 'apex_l1_eg';
+    const httpMethod = 'put'; // API uses HTTP PUT
 
     const reqOptions = {
         appId,
@@ -114,13 +118,18 @@ function getCannonBall(teamName) {
  * @returns {Promise<object>} Updated team information
  */
 function getDragonBall(teamName) {
-    let endpoint = `${endpointHost}/api/weapons/dragonball`; // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
-    let signingEndpoint = `${signingHost}/api/weapons/dragonball`; // The API gateway's API endpoint, for signing
+    // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
+    let endpoint = `${endpointHost}/api/weapons/dragonball`;
+    // The API gateway's API endpoint, for signing
+    let signingEndpoint = `${signingHost}/api/weapons/dragonball`;
 
-    // In alphabetical order, required parameters for the ApiSigningUtil
-    const appId = 'apex-dota-get-l2-weapon';
+    // Required parameters for the ApiSigningUtil
+
+    // Use the blacksmith APIs to obtain the following 2 L2 authentication parameters
+    const appId = ''; // Apex App ID set at Apex gateway.
+    const keyString = ''; // Private key used to authenticate with Apex App
+
     const authPrefix = 'apex_l2_eg';
-    const keyString = dragonballKey;
     const httpMethod = 'put';
 
     const reqOptions = {
@@ -174,5 +183,3 @@ function postBlacksmithAnswer(level, answer) {
         })
         .catch(printError);
 }
-
-return getDragonBall('team4').then(console.log);
