@@ -2,12 +2,12 @@
   "name": "apex-api-workshop-2018",
   "version": "1.0.0",
   "description": "Apex API Workshop 2018 package list",
-  "main": "getProtectedWeapon.js",
+  "main": "gameExample.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "node-apex-api-security": "^0.7.4",
+    "node-apex-api-security": "^0.7.6",
     "superagent": "^3.8.2"
   },
   "repository": {
