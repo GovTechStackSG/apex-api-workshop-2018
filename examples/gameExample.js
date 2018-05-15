@@ -174,7 +174,7 @@ function postBlacksmithAnswer(level, answer) {
 /**
  *  Attack another team to bring down their health
  */
-function attackTeam(attack, defender, weaponName) {
+function attackTeam(attacker, defender, weaponName) {
     // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
     let endpoint = 'https://training.api.gdshive.com/apex-dota/api/attack';
     // The API gateway's API endpoint, for signing
