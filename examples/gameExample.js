@@ -8,29 +8,17 @@ const request = require('superagent');
 const ApiSigningUtil = require('node-apex-api-security').ApiSigningUtil;
 
 // Load the key required for signing L2 API calls
-const dragonballKey = fs.readFileSync(path.resolve(__dirname, 'keys-certs/l2-auth-key.pem')); 
-
-// We will hit the API at this endpoint
-let endpointHost = 'https://training.api.gdshive.com/apex-dota';
-
-// When constructing signatures, we need to use this endpoint instead
-let signingHost = 'https://training.api.lab/apex-dota'; 
+const dragonballKey = fs.readFileSync(path.resolve(__dirname, 'keys-certs/l2-auth-key.pem'));
 
 // API call functions. 
 // These functions make use of Javascript promises (https://developers.google.com/web/fundamentals/primers/promises)
-
-// If a call fails, it will be printed to the console
-function printError(error) {
-    console.log(error.response ? error.response.error : error);
-}
-
 /**
  * Fetch information on all teams
  *
  * @returns {Promise<array>} An array of objects containing team information
  */
 function getAllTeamsStatuses() {
-    return request.get(`${endpointHost}/api/teams/status`)
+    return request.get('https://training.api.gdshive.com/apex-dota/api/teams/status')
         .then(function(response) {
             return response.body;
         })
@@ -44,7 +32,7 @@ function getAllTeamsStatuses() {
  * @returns {Promise} Team information
  */
 function getTeamStatus(teamName) {
-    return request.get(`${endpointHost}/api/teams/${teamName}/status`)
+    return request.get('https://training.api.gdshive.com/apex-dota/api/teams/' + teamName + '/status')
         .then(function(response) {
             return response.body;
         })
@@ -58,7 +46,7 @@ function getTeamStatus(teamName) {
  * @returns {Promise} Updated team information
  */
 function getSnowBall(teamName) {
-    return request.put(`${endpointHost}/api/weapons/snowball`)
+    return request.put('https://training.api.gdshive.com/apex-dota/api/weapons/snowball')
         .send({
             teamName: teamName
         })
@@ -76,12 +64,11 @@ function getSnowBall(teamName) {
  */
 function getCannonBall(teamName) {
     // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
-    let endpoint = `${endpointHost}/api/weapons/cannonball`;
+    let endpoint = 'https://training.api.gdshive.com/apex-dota/api/weapons/cannonball';
     // The API gateway's API endpoint, for signing
-    let signingEndpoint = `${signingHost}/api/weapons/cannonball`;
+    let signingEndpoint = 'https://training.api.lab/apex-dota/api/weapons/cannonball';
 
     // Required parameters for the ApiSigningUtil
-
     // Use the blacksmith APIs to obtain the following 2 L1 authentication parameters
     const appId = ''; // Apex App ID set at Apex gateway.
     const secret = ''; // App secret, set at Apex gateway.
@@ -119,12 +106,11 @@ function getCannonBall(teamName) {
  */
 function getDragonBall(teamName) {
     // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
-    let endpoint = `${endpointHost}/api/weapons/dragonball`;
+    let endpoint = 'https://training.api.gdshive.com/apex-dota/api/weapons/dragonball';
     // The API gateway's API endpoint, for signing
-    let signingEndpoint = `${signingHost}/api/weapons/dragonball`;
+    let signingEndpoint = 'https://training.api.lab/apex-dota/api/weapons/dragonball';
 
     // Required parameters for the ApiSigningUtil
-
     // Use the blacksmith APIs to obtain the following 2 L2 authentication parameters
     const appId = ''; // Apex App ID set at Apex gateway.
     const keyString = ''; // Private key used to authenticate with Apex App
@@ -160,7 +146,7 @@ function getDragonBall(teamName) {
  * @returns {Promise<object>} Programming puzzle to solve to obtain L1/L2 secret
  */
 function getBlacksmithPuzzle(level) {
-    return request.get(`${endpointHost}/api/blacksmith/levels/${level}`)
+    return request.get('https://training.api.gdshive.com/apex-dota/api/blacksmith/levels/' + level)
         .then(function(response) {
             return response.body;
         })
@@ -168,13 +154,14 @@ function getBlacksmithPuzzle(level) {
 }
 
 /**
- *
+ * Submit answer to blacksmith challenge to obtain L1 or L2 weapon secrets
+ * 
  * @param {number} level: 1 or 2
  * @param {string} answer to GET blacksmith API's puzzle
  * @returns {Promise<Object>} L1 secret for getCannonBall, or L2 secret for getDragonBall
  */
 function postBlacksmithAnswer(level, answer) {
-    return request.post(`${endpointHost}/api/blacksmith/levels/${level}`)
+    return request.post('https://training.api.gdshive.com/apex-dota/api/blacksmith/levels/${level}')
         .send({
             answer: answer
         })
@@ -182,4 +169,48 @@ function postBlacksmithAnswer(level, answer) {
             return response.body;
         })
         .catch(printError);
+}
+
+/**
+ *  Attack another team to bring down their health
+ */
+function attackTeam(attack, defender, weaponName) {
+    // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
+    let endpoint = 'https://training.api.gdshive.com/apex-dota/api/attack';
+    // The API gateway's API endpoint, for signing
+    let signingEndpoint = 'https://training.api.lab/apex-dota/api/attack';
+
+    // Required parameters for ApiSigningUtil
+    const appId = 'apex-dota-l1-attack'; // Apex App ID, set at Apex gateway
+    const secret = 'eXnotJP2NWC4'; // Apex App secret, set at Apex gateway
+
+    // Prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway
+    const authPrefix = 'apex_l1_eg';
+    const httpMethod = 'post'; // API uses HTTP PUT
+
+    const reqOptions = {
+        appId,
+        authPrefix,
+        httpMethod,
+        secret,
+        urlPath: signingEndpoint
+    };
+
+    const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
+    return request(httpMethod, endpoint)
+        .set('authorization', authToken) // Set authorization header to token
+        .send({
+            attacker: attacker,
+            defender: defender,
+            weaponName: weaponName
+        })
+        .then(function(response) { // If API is successfully called
+            return response.body
+        })
+        .catch(printError);
+}
+
+// If a call fails, it will be printed to the console
+function printError(error) {
+    console.log(error.response ? error.response.error : error);
 }
