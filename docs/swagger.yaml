@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  description: APEX API Challenge API Documentation
   version: 1.0.0
   title: Defence of the APIs
+  description: APEX API Challenge API Documentation. All APIs use L0 authentication unless otherwise specified.
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
@@ -56,7 +56,7 @@ paths:
     put:
       tags:
         - weapons
-      summary: Get snow balls (L0 authentication weapon)
+      summary: Get snow balls
       description: Obtains some snow balls for the given team
       responses:
         '200':
@@ -77,7 +77,7 @@ paths:
     put:
       tags:
         - weapons
-      summary: Get cannon balls (L1 authentication weapon)
+      summary: Get cannon balls (L1 authentication)
       description: Obtains some cannon balls for the given team
       responses:
         '200':
@@ -98,12 +98,12 @@ paths:
           name: Authorization
           type: string
           required: true
-          description: Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See https://github.com/GovTechSG/node-apex-api-security.
+          description: Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See https://github.com/GovTechSG/node-apex-api-security to learn how to produce this signature.
   '/weapons/dragonball':
     put:
       tags:
         - weapons
-      summary: Get dragon balls (L2 authentication weapon)
+      summary: Get dragon balls (L2 authentication)
       description: Obtains some dragon balls for the given team)
       responses:
         '200':
@@ -124,7 +124,7 @@ paths:
           name: Authorization
           type: string
           required: true
-          description: Apex L2 signature token, signed with an Apex app ID and private key with access to the API. See https://github.com/GovTechSG/node-apex-api-security.
+          description: Apex L2 signature token, signed with an Apex app ID and private key with access to the API. See https://github.com/GovTechSG/node-apex-api-security to learn how to produce this signature.
   /blacksmith/levels/1:
     get:
       tags:
@@ -206,10 +206,14 @@ paths:
     post:
       tags:
         - attack
-      summary: Attack other teams with your weapons
-      description:
+      summary: Attack other teams with your weapons (L1 authentication)
+      description: >-
         Use a specified weapon to attack another team, and bring down their
-        health
+        health. Refer below for the App ID and app secret.
+
+        **App ID** apex-dota-l1-attack
+
+        **App secret** eXnotJP2NWC4
       consumes:
         - application/json
       parameters:
@@ -217,10 +221,14 @@ paths:
           in: body
           required: true
           description: >-
-            Specifies the attacker, defender, weapon used, and provides the
-            attacker password
+            Specifies the attacker, defender and weapon used
           schema:
             $ref: '#/definitions/AttackRequest'
+        - in: header
+          name: Authorization
+          type: string
+          required: true
+          description: Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See https://github.com/GovTechSG/node-apex-api-security to learn how to produce this signature.
       responses:
         '200':
           description: >-
@@ -229,7 +237,7 @@ paths:
         '400':
           description: >-
             Attacking/defending team has no more health; or attacking team has
-            not enough ammo; or attacking team provided an invalid password
+            not enough ammo
 definitions:
   Team:
     type: object
@@ -313,9 +321,6 @@ definitions:
       defender:
         type: string
         example: team99
-      password:
-        type: string
-        example: only-the-attacker-can-know-this
       weaponName:
         type: string
         example: snowball

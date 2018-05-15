@@ -35,13 +35,13 @@
             <a href="#tag-weapons">weapons</a>
             <ul>
               <li>
-                <a href="#operation--weapons-snowball-put"> Get snow balls (L0 authentication weapon) </a>
+                <a href="#operation--weapons-snowball-put"> Get snow balls </a>
               </li>
               <li>
-                <a href="#operation--weapons-cannonball-put"> Get cannon balls (L1 authentication weapon) </a>
+                <a href="#operation--weapons-cannonball-put"> Get cannon balls (L1 authentication) </a>
               </li>
               <li>
-                <a href="#operation--weapons-dragonball-put"> Get dragon balls (L2 authentication weapon) </a>
+                <a href="#operation--weapons-dragonball-put"> Get dragon balls (L2 authentication) </a>
               </li>
             </ul>
           </section>
@@ -66,7 +66,7 @@
             <a href="#tag-attack">attack</a>
             <ul>
               <li>
-                <a href="#operation--attack-post"> Attack other teams with your weapons </a>
+                <a href="#operation--attack-post"> Attack other teams with your weapons (L1 authentication) </a>
               </li>
             </ul>
           </section>
@@ -93,7 +93,7 @@
           <div id="introduction" data-traverse-target="introduction">
             <div class="doc-row">
               <div class="doc-copy">
-                <p>APEX API Challenge API Documentation</p>
+                <p>APEX API Challenge API Documentation. All APIs use L0 authentication unless otherwise specified.</p>
               </div>
               <div class="doc-examples">
                 <section>
@@ -300,7 +300,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Get snow balls (L0 authentication weapon)</span>
+              <span class="operation-summary">Get snow balls</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -394,7 +394,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Get cannon balls (L1 authentication weapon)</span>
+              <span class="operation-summary">Get cannon balls (L1 authentication)</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -440,7 +440,7 @@
                     </div>
                     <div class="prop-value">
                       <p>Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See
-                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a>.</p>
+                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a> to learn how to produce this signature.</p>
                     </div>
                   </div>
                 </section>
@@ -503,7 +503,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Get dragon balls (L2 authentication weapon)</span>
+              <span class="operation-summary">Get dragon balls (L2 authentication)</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -549,7 +549,7 @@
                     </div>
                     <div class="prop-value">
                       <p>Apex L2 signature token, signed with an Apex app ID and private key with access to the API. See
-                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a>.</p>
+                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a> to learn how to produce this signature.</p>
                     </div>
                   </div>
                 </section>
@@ -988,7 +988,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Attack other teams with your weapons</span>
+              <span class="operation-summary">Attack other teams with your weapons (L1 authentication)</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -1001,7 +1001,9 @@
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-description">
-                  <p>Use a specified weapon to attack another team, and bring down their health</p>
+                  <p>Use a specified weapon to attack another team, and bring down their health. Refer below for the App ID and app secret.
+                    <strong>App ID</strong> apex-dota-l1-attack
+                    <strong>App secret</strong> eXnotJP2NWC4</p>
                 </section>
               </div>
             </div>
@@ -1018,8 +1020,25 @@
                     </div>
                     <div class="prop-value columns small-6">
                       <!-- <div class="swagger-request-description"> -->
-                      <p>Specifies the attacker, defender, weapon used, and provides the attacker password</p>
+                      <p>Specifies the attacker, defender and weapon used</p>
                       <!-- </div> -->
+                    </div>
+                  </div>
+                </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">Authorization</div>
+                      <span class="json-property-required"></span>
+                      <div class="prop-subtitle"> in header </div>
+                      <div class="prop-subtitle">
+                        <span class="json-property-type">string</span>
+                        <span class="json-property-range" title="Value limits"></span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Apex L1 signature token, signed with an Apex app ID and app secret with access to the API. See
+                        <a href="https://github.com/GovTechSG/node-apex-api-security">https://github.com/GovTechSG/node-apex-api-security</a> to learn how to produce this signature.</p>
                     </div>
                   </div>
                 </section>
@@ -1033,7 +1052,6 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;attacker&quot;</span>: <span class="hljs-string">&quot;team00&quot;</span>,
   <span class="hljs-attr">&quot;defender&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
-  <span class="hljs-attr">&quot;password&quot;</span>: <span class="hljs-string">&quot;only-the-attacker-can-know-this&quot;</span>,
   <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>
 }
 </code></pre>
@@ -1057,7 +1075,7 @@
                       <div class="prop-title">400 Bad Request</div>
                     </div>
                     <div class="prop-value">
-                      <p>Attacking/defending team has no more health; or attacking team has not enough ammo; or attacking team provided an invalid password</p>
+                      <p>Attacking/defending team has no more health; or attacking team has not enough ammo</p>
                     </div>
                   </div>
                 </section>
@@ -1367,11 +1385,6 @@
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
-                    <dt data-property-name="password">
-                      <span class="json-property-name">password:</span>
-                      <span class="json-property-type">string</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
                     <dt data-property-name="weaponName">
                       <span class="json-property-name">weaponName:</span>
                       <span class="json-property-type">string</span>
@@ -1386,7 +1399,6 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;attacker&quot;</span>: <span class="hljs-string">&quot;team00&quot;</span>,
   <span class="hljs-attr">&quot;defender&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
-  <span class="hljs-attr">&quot;password&quot;</span>: <span class="hljs-string">&quot;only-the-attacker-can-know-this&quot;</span>,
   <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>
 }
 </code></pre>
