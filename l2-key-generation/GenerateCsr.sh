@@ -8,7 +8,7 @@ ORGANIZATION_UNIT="Application Infrastructure"
 ORGANIZATION_NAME=GovTech
 LOCALITY_NAME=Hive
 STATE_NAME=Singapore
-EMAIL=email@example.com
+EMAIL=wei_junyu@ida-gds.com
 
 if [ $# -eq 2 ]
 then

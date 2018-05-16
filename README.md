@@ -82,6 +82,14 @@ which require participants to obtain Apex L1 and L2 credentials before invoking.
 invoking the blacksmith APIs.
 
 #### Using `gameApis.js`
+
+Before running the code in `gameApis.js` you would need to install required dependencies:
+
+```bash
+$ npm install node-apex-api-security # Required for generating Apex signature tokens
+$ npm install superagent # Used by gameApis.js to make HTTP calls
+```
+
 ```javascript
 let ApiSigningUtil = require('node-apex-api-security');
 let gameApis = require('./gameApis');
