@@ -120,8 +120,8 @@ const reqOptions = {
 
 const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
 
-// This calls the attack API
-gameApis.attackTeam('alpha', 'beta', 'snowball', 'team-alpha-attack-password', authToken)
+// This calls the attack API. Replace attack-password with the one that your team is given
+gameApis.attackTeam('alpha', 'beta', 'snowball', 'attack-password', authToken)
 ```
 For more information on how to use ApiSigningUtil, check out [https://github.com/GovTechSG/node-apex-api-security]().
 

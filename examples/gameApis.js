@@ -128,7 +128,7 @@ function getBlacksmithPuzzle(level) {
  * @returns {Promise<Object>} L1 secret for getCannonBall, or L2 secret for getDragonBall
  */
 function postBlacksmithAnswer(level, answer) {
-    return request.post('https://training.api.gdshive.com/apex-dota/api/blacksmith/levels/${level}')
+    return request.post('https://training.api.gdshive.com/apex-dota/api/blacksmith/levels/' + level)
         .send({
             answer: answer
         })
