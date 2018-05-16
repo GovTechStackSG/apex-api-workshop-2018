@@ -80,7 +80,7 @@ obtain secrets, and use the `node-apex-api-security` npm package to sign your AP
 Consequently, they are significantly more powerful than snow balls, whose API is unsecured.
 
 An example of the code you will write to play this game is included below. The full API documentation can be found at
-[https://govtechstacksg.github.io/apex-api-workshop-2018](). 
+https://govtechstacksg.github.io/apex-api-workshop-2018.
 The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder. 
 
 You would want to examine the Node.js examples found in `examples/gameApis.js`, which provide helper code in invoking the
@@ -132,7 +132,7 @@ const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
 gameApis.attackTeam('alpha', 'beta', 'snowball', 'attack-password', authToken)
 ```
 For more information on how to use ApiSigningUtil to sign L1 and L2 signatures, 
-visit [https://github.com/GovTechSG/node-apex-api-security]().
+visit https://github.com/GovTechSG/node-apex-api-security.
 
 #### L1 and L2 weapons
 
