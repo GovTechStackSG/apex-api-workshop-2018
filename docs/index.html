@@ -93,7 +93,7 @@
           <div id="introduction" data-traverse-target="introduction">
             <div class="doc-row">
               <div class="doc-copy">
-                <p>APEX API Challenge API Documentation. All APIs use L0 authentication unless otherwise specified.</p>
+                <p>APEX API Challenge API Documentation. All APIs use L0 authentication (no auth) unless otherwise specified.</p>
               </div>
               <div class="doc-examples">
                 <section>
@@ -1052,7 +1052,8 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;attacker&quot;</span>: <span class="hljs-string">&quot;team00&quot;</span>,
   <span class="hljs-attr">&quot;defender&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
-  <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>
+  <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>,
+  <span class="hljs-attr">&quot;attackPassword&quot;</span>: <span class="hljs-string">&quot;mypassword&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1390,6 +1391,11 @@
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
+                    <dt data-property-name="attackPassword">
+                      <span class="json-property-name">attackPassword:</span>
+                      <span class="json-property-type">string</span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
                   </dl>
                 </section>
               </div>
@@ -1399,7 +1405,8 @@
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
   <span class="hljs-attr">&quot;attacker&quot;</span>: <span class="hljs-string">&quot;team00&quot;</span>,
   <span class="hljs-attr">&quot;defender&quot;</span>: <span class="hljs-string">&quot;team99&quot;</span>,
-  <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>
+  <span class="hljs-attr">&quot;weaponName&quot;</span>: <span class="hljs-string">&quot;snowball&quot;</span>,
+  <span class="hljs-attr">&quot;attackPassword&quot;</span>: <span class="hljs-string">&quot;mypassword&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->

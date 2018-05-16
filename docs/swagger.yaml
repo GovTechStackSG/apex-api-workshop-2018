@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   version: 1.0.0
   title: Defence of the APIs
-  description: APEX API Challenge API Documentation. All APIs use L0 authentication unless otherwise specified.
+  description: APEX API Challenge API Documentation. All APIs use L0 authentication (no auth) unless otherwise specified.
   license:
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
@@ -324,3 +324,6 @@ definitions:
       weaponName:
         type: string
         example: snowball
+      attackPassword:
+        type: string
+        example: mypassword

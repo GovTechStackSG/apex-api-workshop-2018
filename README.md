@@ -72,9 +72,16 @@ Participants will need to make use of the game's APIs to obtain weapons and atta
 are 3 types of weapons in this game: snow balls, cannon balls and dragon balls. Each weapon deals progressively higher 
 damage and are harder to obtain. Each team would start with 10 snow balls.
 
-There are 4 types of APIs used to interact with the game backend: status, weapon, blacksmith, attack. API documentation 
-and swagger file can be found under the `docs` folder. You can also view the documentation at 
-[https://govtechstacksg.github.io/apex-api-workshop-2018]().
+There are 4 types of APIs used to interact with the game backend: status, weapon, blacksmith, attack.
+In general, your objectives in this game would be to call the weapon APIs to obtain ammo, and call the attack API to 
+attack other teams with the ammo you have accumulated. Note however, that the cannon ball and dragon ball weapon APIs
+are secured with Apex L1 and L2 auth policies respectively. This means that you would need to use the blacksmith APIs to
+obtain secrets, and use the `node-apex-api-security` npm package to sign your API calls to obtain these two weapons.
+Consequently, they are significantly more powerful than snow balls, whose API is unsecured.
+
+An example of the code you will write to play this game is included below. The full API documentation can be found at
+[https://govtechstacksg.github.io/apex-api-workshop-2018](). 
+The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder. 
 
 You would want to examine the Node.js examples found in `examples/gameApis.js`, which provide helper code in invoking the
 APIs in our game. All of the functions can be used as-is, except for the `getCannonBall` and `getDragonBall` functions 
@@ -124,7 +131,8 @@ const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
 // This calls the attack API at https://training.api.gdshive.com. Replace attack-password with the one that your team is given
 gameApis.attackTeam('alpha', 'beta', 'snowball', 'attack-password', authToken)
 ```
-For more information on how to use ApiSigningUtil, check out [https://github.com/GovTechSG/node-apex-api-security]().
+For more information on how to use ApiSigningUtil to sign L1 and L2 signatures, 
+visit [https://github.com/GovTechSG/node-apex-api-security]().
 
 #### L1 and L2 weapons
 
