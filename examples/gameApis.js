@@ -3,12 +3,24 @@
 const fs = require('fs');
 const path = require('path');
 // We will use superagent as our HTTP request library, see https://visionmedia.github.io/superagent/
-const request = require('superagent'); 
+const request = require('superagent');
 // Library used for signing L1 and L2 API calls
 const ApiSigningUtil = require('node-apex-api-security').ApiSigningUtil;
 
 // Load the key required for signing L2 API calls
 const dragonballKey = fs.readFileSync(path.resolve(__dirname, 'keys-certs/l2-auth-key.pem'));
+
+// Exported functions
+module.exports = {
+    getAllTeamsStatuses,
+    getTeamStatus,
+    getSnowBall,
+    getCannonBall,
+    getDragonBall,
+    getBlacksmithPuzzle,
+    postBlacksmithAnswer,
+    attackTeam
+};
 
 // API call functions. 
 // These functions make use of Javascript promises (https://developers.google.com/web/fundamentals/primers/promises)
@@ -60,39 +72,16 @@ function getSnowBall(teamName) {
  * Fetches some cannon balls for a particular team
  *
  * @param teamName
+ * @param {string} authToken L1 signature token generated containing apex signature. See https://github.com/GovTechSG/node-apex-api-security.
  * @returns {Promise} Updated team information
  */
-function getCannonBall(teamName) {
-    // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
-    let endpoint = 'https://training.api.gdshive.com/apex-dota/api/weapons/cannonball';
-    // The API gateway's API endpoint, for signing
-    let signingEndpoint = 'https://training.api.lab/apex-dota/api/weapons/cannonball';
-
-    // Required parameters for the ApiSigningUtil
-    // Use the blacksmith APIs to obtain the following 2 L1 authentication parameters
-    const appId = ''; // Apex App ID set at Apex gateway.
-    const secret = ''; // App secret, set at Apex gateway.
-
-    // Prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway
-    const authPrefix = 'apex_l1_eg';
-    const httpMethod = 'put'; // API uses HTTP PUT
-
-    const reqOptions = {
-        appId,
-        authPrefix,
-        httpMethod,
-        secret,
-        urlPath: signingEndpoint
-    };
-
-    const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
-    
-    return request(httpMethod, endpoint)
+function getCannonBall(teamName, authToken) {
+    return request.put('https://training.api.gdshive.com/apex-dota/api/weapons/cannonball')
         .set('authorization', authToken) // Set authorization header to token
         .send({
             teamName: teamName
         })
-        .then(function(response) { // If API is successfully called
+        .then(function(response) {
             return response.body
         })
         .catch(printError);
@@ -102,34 +91,12 @@ function getCannonBall(teamName) {
  * Fetches some dragon balls for a team
  *
  * @param teamName
+ * @param {string} authToken L2 signature token generated containing apex signature. See https://github.com/GovTechSG/node-apex-api-security.
  * @returns {Promise<object>} Updated team information
  */
-function getDragonBall(teamName) {
-    // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
-    let endpoint = 'https://training.api.gdshive.com/apex-dota/api/weapons/dragonball';
-    // The API gateway's API endpoint, for signing
-    let signingEndpoint = 'https://training.api.lab/apex-dota/api/weapons/dragonball';
-
-    // Required parameters for the ApiSigningUtil
-    // Use the blacksmith APIs to obtain the following 2 L2 authentication parameters
-    const appId = ''; // Apex App ID set at Apex gateway.
-    const keyString = ''; // Private key used to authenticate with Apex App
-
-    const authPrefix = 'apex_l2_eg';
-    const httpMethod = 'put';
-
-    const reqOptions = {
-        appId,
-        authPrefix,
-        keyString,
-        httpMethod,
-        urlPath: signingEndpoint
-    };
-
-    const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
-
-    return request(httpMethod, endpoint)
-        .set('authorization', authToken)
+function getDragonBall(teamName, authToken) {
+    return request.put('https://training.api.gdshive.com/apex-dota/api/weapons/dragonball')
+        .set('authorization', authToken) // Set authorization header to token
         .send({
             teamName: teamName
         })
@@ -173,38 +140,23 @@ function postBlacksmithAnswer(level, answer) {
 
 /**
  *  Attack another team to bring down their health
+ *
+ *  @param {string} attacker Name of attacking team
+ *  @param {string} defender Name of defending team
+ *  @param {string} weaponName Name of weapon used to attack
+ *  @param {string} attackPassword Password for attacker, to make sure that the attacking team
+ *  @param {string} authToken L1 signature token generated containing apex signature. See https://github.com/GovTechSG/node-apex-api-security.
  */
-function attackTeam(attacker, defender, weaponName) {
-    // The actual endpoint URL we want to hit (proxies to the API gateway's endpoint)
-    let endpoint = 'https://training.api.gdshive.com/apex-dota/api/attack';
-    // The API gateway's API endpoint, for signing
-    let signingEndpoint = 'https://training.api.lab/apex-dota/api/attack';
-
-    // Required parameters for ApiSigningUtil
-    const appId = 'apex-dota-l1-attack'; // Apex App ID, set at Apex gateway
-    const secret = 'eXnotJP2NWC4'; // Apex App secret, set at Apex gateway
-
-    // Prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway
-    const authPrefix = 'apex_l1_eg';
-    const httpMethod = 'post'; // API uses HTTP PUT
-
-    const reqOptions = {
-        appId,
-        authPrefix,
-        httpMethod,
-        secret,
-        urlPath: signingEndpoint
-    };
-
-    const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
-    return request(httpMethod, endpoint)
+function attackTeam(attacker, defender, weaponName, attackPassword, authToken) {
+    return request.post('https://training.api.gdshive.com/apex-dota/api/attack')
         .set('authorization', authToken) // Set authorization header to token
         .send({
             attacker: attacker,
             defender: defender,
-            weaponName: weaponName
+            weaponName: weaponName,
+            attackPassword: attackPassword
         })
-        .then(function(response) { // If API is successfully called
+        .then(function(response) {
             return response.body
         })
         .catch(printError);

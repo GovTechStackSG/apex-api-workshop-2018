@@ -1,4 +1,4 @@
-# APEX API Challenge - Defence of the APIs
+# APEX API Challenge
 ![APEX Logo](https://github.com/GovTechStackSg/apex-api-workshop-2018/blob/master/assets/color_apex_landscape.png)
 ## May 2018 GDS AI Conference - APEX Hands-on Workshop
 
@@ -6,13 +6,15 @@
  * [Agenda](#agenda)
  * [Prerequisites](#prerequisites)
  * [Preparation](#preparation)
- * [Gameplay](#api-challenge)
+ * [API Challenge](#api-challenge)
 
-**NOTE: Watch this space!** This repo will be updated occasionally in the run-up to the actual workshop. Feel free to visit this about once a week to see what's new as a way to help you prepare for the session.
+**NOTE: Watch this space!** This repo will be updated occasionally in the run-up to the actual workshop. Feel free to 
+visit this about once a week to see what's new as a way to help you prepare for the session.
 
 ## Overview
 
-This is a hands-on session where participants will design and secure their APIs. You will also get to play a game where you will be able to apply what you have learned from our sharing session.
+This is a hands-on session where participants will design and secure their APIs. You will also get to play a game where 
+you will be able to apply what you have learned from our sharing session.
 
 ## Agenda
 
@@ -28,7 +30,8 @@ This is a hands-on session where participants will design and secure their APIs.
 
 ## Prerequisites
 
-- Some programming knowledge, preferably in Javascript. Example files in Javascript (for Node.js) will be provided for the workshop.
+- Some programming knowledge, preferably in Javascript. Example files in Javascript (for Node.js) will be provided for 
+the workshop.
 - Working laptop with Wifi capability.
 - Your curiousity!
 
@@ -39,60 +42,102 @@ This is a hands-on session where participants will design and secure their APIs.
 Please set up your machine before the session with the followings :
 
 - Google Chrome (highly recommended)
-- [Node.js version, 8.x.x LTS recommended](https://nodejs.org/en/download/)
+- [Node.js version, 8.x.x LTS highly recommended](https://nodejs.org/en/download/)
 - Text Editors
     - [Microsoft VS Code](https://code.visualstudio.com/download) (Recommended)
     - Notepad++/Sublime Text
     - Vim/Nano
 - API Test Client (Optional) 
-    - [Postman Chrome Plugin](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) or [Postman Desktop App](https://www.getpostman.com/) (Recommended)
+    - [Postman Chrome Plugin](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) 
+    or [Postman Desktop App](https://www.getpostman.com/) (Recommended)
     - Restlet
 - [Git](https://git-scm.com/downloads)
-
-### Using the examples
-
-**You will need the [Node.js runtime](https://nodejs.org/en/) installed to run the examples in this repository**
-
-Clone this repository to your machine. You can study the code in the examples folder to see how this is done for secured endpoints.
-
-You will be given the actual gateway-secured APIs during the workshop to call.
-
-```bash
-$ cd /your/local/workspace
-
-$ git clone https://github.com/GovTechStackSG/apex-api-workshop-2018.git
-
-$ cd /your/local/workspace/apex-api-workshop-2018/examples
-
-$ node getTeamStatus.js
-
-$ node getProtectedWeapon.js
-```
-
-`getTeamStatus.js` shows how to access the API challenge's team status API.
-
-`getProtectedWeapon.js` shows how to use the APEX security utilities to access protected weapon APIs.
-
 ## API Challenge
+*Please make sure that you have the Node.js runtime installed on your laptop*
 
-### Objectives
-- To help participants familiarise APEX portal through an interactive team-based API game
-- Participants will know how to invoke an L0/L1/L2 secured API 
-- Participants will know how to create an App in APEX
+### Take aways
+- Participants will learn how APIs are secured on Apex.
+- Participants will learn how to invoke an unsecured/L1/L2 API. 
 
-### Game Rules (Protect your fortress)
-Each team will consist of 10 members. The purpose of the game is to have the highest H/P when the game ends. Game ends when the time is up!
+### Game rules
+Teams will need to gather weapons and attack each other's fortresses making use of API calls. The status of each team 
+will be projected for everyone to see.
 
-Team will need to gather weapons and attack other team's fortress.
+Participants will be split into 10 teams. The goal of the game is to be the last team standing, or have the highest HP 
+when time is up.  
 
 ### Instructions
+ 
+Participants will need to make use of the game's APIs to obtain weapons and attack other teams with their weapons. There
+are 3 types of weapons in this game: snow balls, cannon balls and dragon balls. Each weapon deals progressively higher 
+damage and are harder to obtain. Each team would start with 10 snow balls.
 
-### API Documentation
+There are 4 types of APIs used to interact with the game backend: status, weapon, blacksmith, attack. API documentation 
+and swagger file can be found under the `docs` folder. You can also view the documentation at 
+[https://govtechstacksg.github.io/apex-api-workshop-2018]().
 
-https://govtechstacksg.github.io/apex-api-workshop-2018
+You would want to examine the Node.js examples found in `examples/gameApis.js`, which provide helper code in invoking the
+APIs in our game. All of the functions can be used as-is, except for the `getCannonBall` and `getDragonBall` functions 
+which require participants to obtain Apex L1 and L2 credentials before invoking. These credentials can be found be 
+invoking the blacksmith APIs.
+
+#### Using `gameApis.js`
+```javascript
+let ApiSigningUtil = require('node-apex-api-security');
+let gameApis = require('./gameApis');
+
+// To find the status for team Alpha
+gameApis.getTeamStatus('alpha')
+    .then(console.log); // Prints response from the API call
+    
+// To obtain some snow balls for team Alpha
+gameApis.getSnowBall('alpha')
+    .then(console.log);
+
+// To attack another team with snow balls
+// We need to construct the signature token since this API is L1 secured.
+const signingEndpoint = 'https://training.api.lab/apex-dota/api/attack'; // The API gateway's API endpoint, for signing. Note that this is different from the actual endpoint called!
+const appId = 'apex-dota-l1-attack'; // Apex App ID, set at Apex gateway
+const secret = 'eXnotJP2NWC4'; // Apex App secret, set at Apex gateway
+const authPrefix = 'apex_l1_eg'; // Prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway
+const httpMethod = 'post'; // API uses HTTP POST
+
+const reqOptions = {
+ appId,
+ authPrefix,
+ httpMethod,
+ secret,
+ urlPath: signingEndpoint
+};
+
+const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
+
+// This calls the attack API
+gameApis.attackTeam('alpha', 'beta', 'snowball', 'team-alpha-attack-password', authToken)
+```
+For more information on how to use ApiSigningUtil, check out [https://github.com/GovTechSG/node-apex-api-security]().
+
+#### L1 and L2 weapons
+
+To use cannon balls and dragon balls, teams would need to obtain them using the /weapons/cannonball and /weapons/dragonball APIs.
+They are L1 and L2 secured, which means that an authToken would need to be generated to call them, similar to the attack API.
+To obtain the Apex credentials for calling the get cannon ball and get dragon ball APIs, players will need to solve challenges
+presented by the blacksmith APIs.
+
+```javascript
+// To obtain cannon balls
+// 1. Get L1 weapon puzzle from the blacksmith APIs
+gameApis.getBlacksmithPuzzle(1)
+    .then(console.log);
+    
+// 2. After solving the puzzle, POST the answer back to the blacksmith API
+gameApis.postBlacksmithAnswer(1, 'this-is-my-answer')
+    .then(console.log); 
+// If the answer is correct, this would print out the L1 secret needed for obtaining cannon balls.
+// Use them for the appId and secret fields as seen for the attack API example above.
+```
+
 
 ### Important links
-
-- Interactive Apex signature token validator: https://github.com/GovTechSG/apex-signature-validator
-
 - Node.js Library for signing API requests: https://github.com/GovTechSG/node-apex-api-security
+- Interactive Apex signature token validator: https://github.com/GovTechSG/apex-signature-validator
