@@ -91,6 +91,7 @@ $ npm install superagent # Used by gameApis.js to make HTTP calls
 ```
 
 ```javascript
+// Import our dependencies
 let ApiSigningUtil = require('node-apex-api-security');
 let gameApis = require('./gameApis');
 
@@ -120,7 +121,7 @@ const reqOptions = {
 
 const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
 
-// This calls the attack API. Replace attack-password with the one that your team is given
+// This calls the attack API at https://training.api.gdshive.com. Replace attack-password with the one that your team is given
 gameApis.attackTeam('alpha', 'beta', 'snowball', 'attack-password', authToken)
 ```
 For more information on how to use ApiSigningUtil, check out [https://github.com/GovTechSG/node-apex-api-security]().

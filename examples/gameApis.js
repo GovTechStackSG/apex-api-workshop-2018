@@ -1,14 +1,6 @@
 // Work your way down the file to learn about the various functions you'd need to play this game
-// Libraries
-const fs = require('fs');
-const path = require('path');
 // We will use superagent as our HTTP request library, see https://visionmedia.github.io/superagent/
 const request = require('superagent');
-// Library used for signing L1 and L2 API calls
-const ApiSigningUtil = require('node-apex-api-security').ApiSigningUtil;
-
-// Load the key required for signing L2 API calls
-const dragonballKey = fs.readFileSync(path.resolve(__dirname, 'keys-certs/l2-auth-key.pem'));
 
 // Exported functions
 module.exports = {
