@@ -165,6 +165,11 @@ request.post('https://apex.workshop.api.challenge.host/api/attack') // Actual AP
 
 To use cannon balls and dragon balls, teams would need to obtain them using the /weapons/cannonball and /weapons/dragonball APIs.
 They are L1 and L2 secured, which means that an authToken would need to be generated to call them, similar to the attack API.
+
+Example of obtaining an L1 signature token: https://github.com/GovTechSG/node-apex-api-security#l1-secured-api
+
+Example of obtaining an L2 signature token: https://github.com/GovTechSG/node-apex-api-security#l2-secured-api
+
 To obtain the Apex credentials for calling the get cannon ball and get dragon ball APIs, players will need to solve challenges
 presented by the blacksmith APIs.
 
