@@ -177,6 +177,8 @@ request.get('https://apex.workshop.api.challenge.host/api/blacksmith/levels/1')
     });
 
 // 2. After obtaining the answer, POST the answer back to the blacksmith API
+let appId = '';
+let secret = '';
 request.post('https://apex.workshop.api.challenge.host/api/blacksmith/levels/1')
     .send({
         answer: 'my-answer'
@@ -184,8 +186,8 @@ request.post('https://apex.workshop.api.challenge.host/api/blacksmith/levels/1')
     .then(function(response) {
         console.log(response.body); // If the answer is correct, this would print out the L1 secret needed for obtaining cannon balls.
         // L1 secrets returned if API call succeeds. The appId and secret values can then be used similarly to attack API example above.
-        let appId = response.body.appId;
-        let secret = response.body.secret; 
+        appId = response.body.appId;
+        secret = response.body.secret; 
     });
 
 // 3. You can then use node-apex-api-security to construct Apex signatures and get cannon balls or dragon balls
