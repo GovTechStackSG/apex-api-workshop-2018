@@ -88,15 +88,19 @@ Consequently, they are significantly more powerful than snow balls, whose API is
 
 An example of the code you will write to play this game is included below. It is written for Node.js, and includes code
 that interacts with the game APIs by sending HTTP requests. It also demonstrates how to generate Apex signatures.
- 
-The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018.
-The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder. 
 
-**Summary**
+#### Summary
 
 1. To make API calls, use [Postman](https://www.getpostman.com) or 
 [superagent](https://github.com/visionmedia/superagent) ([documentation](http://visionmedia.github.io/superagent/))
 2. To generate Apex signatures, use our [node-apex-api-security npm package](https://github.com/GovTechSG/node-apex-api-security)
+
+#### API documentation
+
+The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018.
+The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder.
+
+![List of secured APIs](/assets/secured_apis.png)
 
 #### Getting started
 
@@ -112,7 +116,7 @@ $ npm install node-apex-api-security # Required for generating Apex signature to
 $ npm install superagent # Used by gameApis.js to make HTTP calls
 ```
 
-Create a new .js file in your directory and run it with Node.js. For example:`$ node game.js`
+Create a new .js file in your directory and run it with Node.js. For example: `$ node game.js`
 
 ```javascript
 // game.js
@@ -140,11 +144,11 @@ request.put('https://apex.workshop.api.challenge.host/api/weapons/snowball') // 
 // We need to construct the signature token since this API is L1 secured.
 // Actual values will be given on the day of the workshop
 const authToken = ApiSigningUtil.getSignatureToken({
-    urlPath: 'https://apex.workshop.api.signing.host/api/attack', // The API gateway's API endpoint used for signing, to be given during the workshop, for signing.
+    urlPath: 'https://apex.workshop.api.signing.host/api/attack', // API Signing Endpoint. Note: differs from actual endpoint.
     appId: 'my-attack-app-id',      // Apex app ID, set at Apex gateway
     secret: 'my-attack-app-secret', // Apex app secret, set at Apex gateway
     authPrefix: 'apex_l1_eg',       // Gateway auth prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway 
-    httpMethod: 'post'              // HTTP POST API
+    httpMethod: 'post'              // HTTP method used for endpoint; /attack is POST
 });
 
 // Now make the API call
@@ -161,7 +165,11 @@ request.post('https://apex.workshop.api.challenge.host/api/attack') // Actual AP
     })
 ```
 
-##### L1 and L2 weapons
+#### API endpoints vs signing endpoints
+
+The actual endpoint for an API differs from the one used for generating Apex signatures. Both will be given to you during the workshop. 
+
+#### L1 and L2 weapons
 
 To use cannon balls and dragon balls, teams would need to obtain them using the /weapons/cannonball and /weapons/dragonball APIs.
 They are L1 and L2 secured, which means that an authToken would need to be generated to call them, similar to the attack API.
