@@ -73,68 +73,95 @@ are 3 types of weapons in this game: snow balls, cannon balls and dragon balls. 
 damage and are harder to obtain. Each team would start with 10 snow balls.
 
 There are 4 types of APIs used to interact with the game backend: status, weapon, blacksmith, attack.
+
 In general, your objectives in this game would be to call the weapon APIs to obtain ammo, and call the attack API to 
-attack other teams with the ammo you have accumulated. Note however, that the cannon ball and dragon ball weapon APIs
+attack other teams with the ammo you have accumulated. 
+
+To make API calls, you can either use [Postman](https://www.getpostman.com) or the 
+[superagent](https://github.com/visionmedia/superagent) in Node.js (recommended).
+
+Note however, that the cannon ball and dragon ball weapon APIs
 are secured with Apex L1 and L2 auth policies respectively. This means that you would need to use the blacksmith APIs to
-obtain secrets, and use the `node-apex-api-security` npm package to sign your API calls to obtain these two weapons.
+obtain secrets, and use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package to
+sign your API calls to obtain these two weapons.
 Consequently, they are significantly more powerful than snow balls, whose API is unsecured.
 
-An example of the code you will write to play this game is included below. The full API documentation can be found at
-https://govtechstacksg.github.io/apex-api-workshop-2018.
+An example of the code you will write to play this game is included below. It is written for Node.js, and includes code
+that interacts with the game APIs by sending HTTP requests. It also demonstrates how to generate Apex signatures.
+ 
+The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018.
 The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder. 
 
-You would want to examine the Node.js examples found in `examples/gameApis.js`, which provide helper code in invoking the
-APIs in our game. All of the functions can be used as-is, except for the `getCannonBall` and `getDragonBall` functions 
-which require participants to obtain Apex L1 and L2 credentials before invoking. These credentials can be found be 
-invoking the blacksmith APIs.
+**Summary**
 
-#### Using `gameApis.js`
+1. To make API calls, use [Postman](https://www.getpostman.com) or 
+[superagent](https://github.com/visionmedia/superagent) ([documentation](http://visionmedia.github.io/superagent/))
+2. To generate Apex signatures, use our [node-apex-api-security npm package](https://github.com/GovTechSG/node-apex-api-security)
 
-Before running the code in `gameApis.js` you would need to install required dependencies:
+#### Getting started
+
+We will use superagent to make HTTP calls and node-apex-api-security to sign our secured Apex API calls.
+You can learn how to use them from their documentation:
+1. [Superagent documentation](http://visionmedia.github.io/superagent/)
+2. [Node-apex-api-security documentation](https://github.com/GovTechSG/node-apex-api-security)
+ 
+Navigate to your desired directory and install them:
 
 ```bash
 $ npm install node-apex-api-security # Required for generating Apex signature tokens
 $ npm install superagent # Used by gameApis.js to make HTTP calls
 ```
 
+Create a new .js file in your directory and run it with Node.js. For example:`$ node game.js`
+
 ```javascript
+// game.js
+
 // Import our dependencies
 let ApiSigningUtil = require('node-apex-api-security');
-let gameApis = require('./gameApis');
+let request = require('superagent'); // Our HTTP request library. See https://visionmedia.github.io/superagent/
 
-// To find the status for team Alpha
-gameApis.getTeamStatus('alpha')
-    .then(console.log); // Prints response from the API call
-    
-// To obtain some snow balls for team Alpha
-gameApis.getSnowBall('alpha')
-    .then(console.log);
+// Let's make a HTTP call to find the status for our team
+request.get('https://apex.workshop.api.challenge.host/api/teams/my-team-name/status') // The host will be given during the workshop
+    .then(function(response) {      // This callback function runs when the request is complete
+        console.log(response.body); // This prints the team's information 
+    });
 
-// To attack another team with snow balls
+// Let's make a HTTP call to get more snowballs for our team
+request.put('https://apex.workshop.api.challenge.host/api/weapons/snowball') // This is a PUT API
+    .send({
+        teamName: 'my-team-name'
+    })
+    .then(function(response) {
+        console.log(response.body); // If call is successful, prints updated ammo count for your team.
+    });
+
+// Let's make a HTTP call to the attack API to hit another team with snow balls
 // We need to construct the signature token since this API is L1 secured.
-const signingEndpoint = 'https://training.api.lab/apex-dota/api/attack'; // The API gateway's API endpoint, for signing. Note that this is different from the actual endpoint called!
-const appId = 'apex-dota-l1-attack'; // Apex App ID, set at Apex gateway
-const secret = 'eXnotJP2NWC4'; // Apex App secret, set at Apex gateway
-const authPrefix = 'apex_l1_eg'; // Prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway
-const httpMethod = 'post'; // API uses HTTP POST
+// Actual values will be given on the day of the workshop
+const authToken = ApiSigningUtil.getSignatureToken({
+    urlPath: 'https://apex.workshop.api.signing.host/api/attack', // The API gateway's API endpoint used for signing, to be given during the workshop, for signing.
+    appId: 'my-attack-app-id',      // Apex app ID, set at Apex gateway
+    secret: 'my-attack-app-secret', // Apex app secret, set at Apex gateway
+    authPrefix: 'apex_l1_eg',       // Gateway auth prefix, follows format of apex_(l1 or l2)_(ig or eg) depending on l1 or l2 auth, and intranet (ig) or internet (eg) gateway 
+    httpMethod: 'post'              // HTTP POST API
+});
 
-const reqOptions = {
- appId,
- authPrefix,
- httpMethod,
- secret,
- urlPath: signingEndpoint
-};
-
-const authToken = ApiSigningUtil.getSignatureToken(reqOptions);
-
-// This calls the attack API at https://training.api.gdshive.com. Replace attack-password with the one that your team is given
-gameApis.attackTeam('alpha', 'beta', 'snowball', 'attack-password', authToken)
+// Now make the API call
+request.post('https://apex.workshop.api.challenge.host/api/attack') // Actual API endpoint
+    .set('authorization', authToken) // Set Authorization header in request to Apex auth token
+    .send({
+        attacker: 'my-team-name',    // Your team's name
+        defender: 'your-team-name',  // Name of team you are trying to attack
+        weaponName: 'snowball',      // Weapon you want to use, in this case snowball. 
+        attackPassword: 'password'   // Attacker's password, unique to each team. Prevents attacks made for you by other teams
+    })
+    .then(function(response) {
+        console.log(response.body);  // If call is successful, prints the results of the attack
+    })
 ```
-For more information on how to use ApiSigningUtil to sign L1 and L2 signatures, 
-visit https://github.com/GovTechSG/node-apex-api-security.
 
-#### L1 and L2 weapons
+##### L1 and L2 weapons
 
 To use cannon balls and dragon balls, teams would need to obtain them using the /weapons/cannonball and /weapons/dragonball APIs.
 They are L1 and L2 secured, which means that an authToken would need to be generated to call them, similar to the attack API.
@@ -143,18 +170,45 @@ presented by the blacksmith APIs.
 
 ```javascript
 // To obtain cannon balls
-// 1. Get L1 weapon puzzle from the blacksmith APIs
-gameApis.getBlacksmithPuzzle(1)
-    .then(console.log);
-    
-// 2. After solving the puzzle, POST the answer back to the blacksmith API
-gameApis.postBlacksmithAnswer(1, 'this-is-my-answer')
-    .then(console.log); 
-// If the answer is correct, this would print out the L1 secret needed for obtaining cannon balls.
-// Use them for the appId and secret fields as seen for the attack API example above.
+// 1. Get L1 weapon challenge from the blacksmith APIs
+request.get('https://apex.workshop.api.challenge.host/api/blacksmith/levels/1')
+    .then(function(response) {
+        console.log(response.body); // Prints out the question
+    });
+
+// 2. After obtaining the answer, POST the answer back to the blacksmith API
+request.post('https://apex.workshop.api.challenge.host/api/blacksmith/levels/1')
+    .send({
+        answer: 'my-answer'
+    })
+    .then(function(response) {
+        console.log(response.body); // If the answer is correct, this would print out the L1 secret needed for obtaining cannon balls.
+        // L1 secrets returned if API call succeeds. The appId and secret values can then be used similarly to attack API example above.
+        let appId = response.body.appId;
+        let secret = response.body.secret; 
+    });
+
+// 3. You can then use node-apex-api-security to construct Apex signatures and get cannon balls or dragon balls
+let authToken = ApiSigningUtil.getSignatureToken({
+    urlPath: 'https://apex.workshop.api.signing.host/api/weapons/cannonball',
+    appId: appId,   // Obtained from blacksmith POST API
+    secret: secret, // Obtained from blacksmith POST API
+    authPrefix: 'apex_l1_eg',
+    httpMethod: 'put'
+});
+
+// API to obtain cannon balls
+request.put('https://apex.workshop.com.api.challenge.host/api/weapons/cannonball')
+    .set('authorization', authToken)
+    .send({
+        teamName: 'my-team-name'
+    })
+    .then(function(response) {
+        console.log(response.body) // If call is successful, prints updated ammo count for your team.
+    });
 ```
 
-
 ### Important links
-- Node.js Library for signing API requests: https://github.com/GovTechSG/node-apex-api-security
 - Interactive Apex signature token validator: https://github.com/GovTechSG/apex-signature-validator
+This is an interactive HTML app that lets you fill in each parameter individually and generates an Apex signature which 
+you can use to call L1/L2 authenticated endpoints.
