@@ -1,5 +1,5 @@
 # APEX API Challenge
-![APEX Logo](https://github.com/GovTechStackSg/apex-api-workshop-2018/blob/master/assets/color_apex_landscape.png)
+![APEX Logo](/assets/color_apex_landscape.png)
 ## May 2018 GDS AI Conference - APEX Hands-on Workshop
 
  * [Overview](#overview)
@@ -99,6 +99,8 @@ that interacts with the game APIs by sending HTTP requests. It also demonstrates
 
 The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018.
 The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder.
+
+All APIs except those listed below are L0 (unsecured) and do not require authentication via Apex signatures.
 
 ![List of secured APIs](/assets/secured_apis.png)
 
