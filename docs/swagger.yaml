@@ -131,11 +131,11 @@ paths:
         - blacksmith
       summary: Get L1 weapon API authentication challenge
       description: >-
-        Obtain a programming puzzle. The answer should be submitted to this
-        endpoint via POST, in order to obtain an Apex L1 secret
+        Returns a question. The answer should be submitted to this
+        endpoint via POST, in order to obtain an Apex L1 secret.
       responses:
         '200':
-          description: The puzzle to solve to obtain L1 secrets
+          description: The question to answer to obtain L1 secrets
           schema:
             $ref: '#/definitions/BlacksmithL1Question'
         '404':
@@ -143,7 +143,7 @@ paths:
     post:
       tags:
         - blacksmith
-      summary: Submit the answer to the L1 programming puzzle
+      summary: Submit the answer to the L1 question.
       description: If answer is correct, returns the required app ID and app secret for authentication to the /weapons/cannonball API
       consumes:
         - application/json
@@ -151,7 +151,7 @@ paths:
         - name: answer
           in: body
           required: true
-          description: Answer to the puzzle issued by the GET API.
+          description: Answer to the question issued by the GET API.
           schema:
             $ref: '#/definitions/BlacksmithL1Answer'
       responses:
@@ -169,12 +169,11 @@ paths:
         - blacksmith
       summary: Get L2 weapon API authentication challenge
       description: >-
-        Obtain a programming puzzle that requires the answer to the L1 puzzle.
-        The answer should be submitted to this endpoint via POST, in order to
-        obtain an Apex L2 secret
+        Returns a question. The answer should be submitted to this
+        endpoint via POST, in order to obtain an Apex L2 secret.
       responses:
         '200':
-          description: The puzzle to solve to obtain L2 secrets
+          description: The question to answer to obtain L2 secrets
           schema:
             $ref: '#/definitions/BlacksmithL2Question'
         '404':
@@ -182,7 +181,7 @@ paths:
     post:
       tags:
         - blacksmith
-      summary: Submit the answer to the L2 programming puzzle
+      summary: Submit the answer to the L2 question.
       description: If answer is correct, returns the required private key in a JSON string for authentication to the /weapons/dragonball API
       consumes:
         - application/json
@@ -190,7 +189,7 @@ paths:
         - name: answer
           in: body
           required: true
-          description: Answer to the puzzle issued by the GET API.
+          description: Answer to the question issued by the GET API.
           schema:
             $ref: '#/definitions/BlacksmithL2Answer'
       responses:
@@ -267,10 +266,7 @@ definitions:
     properties:
       text:
         type: string
-        example: Reverse the given string
-      string:
-        type: string
-        example: hello
+        example: What is the airspeed velocity of an unladen swallow?
   BlacksmithL1Answer:
     type: object
     required:
@@ -278,19 +274,19 @@ definitions:
     properties:
       answer:
         type: string
-        example: olleh
+        example: 1000
   BlacksmithL2Question:
     type: object
     properties:
       text:
         type: string
-        example: Return a capitalized version of the L1 answer
+        example: What is your favourite colour?
   BlacksmithL2Answer:
     type: object
     properties:
       answer:
         type: string
-        example: OLLEH
+        example: blue
   L1Secret:
     type: object
     properties:
@@ -303,7 +299,7 @@ definitions:
   L2Secret:
     type: object
     properties:
-      certString:
+      keyString:
         type: string
         description: >-
           The PEM-formatted private key used for L2 authentication used for

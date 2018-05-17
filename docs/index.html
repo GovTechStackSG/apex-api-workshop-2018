@@ -52,13 +52,13 @@
                 <a href="#operation--blacksmith-levels-1-get"> Get L1 weapon API authentication challenge </a>
               </li>
               <li>
-                <a href="#operation--blacksmith-levels-1-post"> Submit the answer to the L1 programming puzzle </a>
+                <a href="#operation--blacksmith-levels-1-post"> Submit the answer to the L1 question. </a>
               </li>
               <li>
                 <a href="#operation--blacksmith-levels-2-get"> Get L2 weapon API authentication challenge </a>
               </li>
               <li>
-                <a href="#operation--blacksmith-levels-2-post"> Submit the answer to the L2 programming puzzle </a>
+                <a href="#operation--blacksmith-levels-2-post"> Submit the answer to the L2 question. </a>
               </li>
             </ul>
           </section>
@@ -631,7 +631,7 @@
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-description">
-                  <p>Obtain a programming puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret</p>
+                  <p>Returns a question. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L1 secret.</p>
                 </section>
               </div>
             </div>
@@ -653,7 +653,7 @@
                       <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
                     </div>
                     <div class="prop-value">
-                      <p>The puzzle to solve to obtain L1 secrets</p>
+                      <p>The question to answer to obtain L1 secrets</p>
                     </div>
                   </div>
                   <div class="prop-row prop-group">
@@ -672,8 +672,7 @@
                     <span>(200 OK)</span>
                   </h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Reverse the given string&quot;</span>,
-  <span class="hljs-attr">&quot;string&quot;</span>: <span class="hljs-string">&quot;hello&quot;</span>
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;What is the airspeed velocity of an unladen swallow?&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -691,7 +690,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Submit the answer to the L1 programming puzzle</span>
+              <span class="operation-summary">Submit the answer to the L1 question.</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -721,7 +720,7 @@
                     </div>
                     <div class="prop-value columns small-6">
                       <!-- <div class="swagger-request-description"> -->
-                      <p>Answer to the puzzle issued by the GET API.</p>
+                      <p>Answer to the question issued by the GET API.</p>
                       <!-- </div> -->
                     </div>
                   </div>
@@ -734,7 +733,7 @@
                   </h5>
                   <h5>Request Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;olleh&quot;</span>
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-number">1000</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -814,7 +813,7 @@
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-description">
-                  <p>Obtain a programming puzzle that requires the answer to the L1 puzzle. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret</p>
+                  <p>Returns a question. The answer should be submitted to this endpoint via POST, in order to obtain an Apex L2 secret.</p>
                 </section>
               </div>
             </div>
@@ -836,7 +835,7 @@
                       <!-- <span class="swagger-global"></span> <span class="json-schema-reference"><a href=""></a></span> -->
                     </div>
                     <div class="prop-value">
-                      <p>The puzzle to solve to obtain L2 secrets</p>
+                      <p>The question to answer to obtain L2 secrets</p>
                     </div>
                   </div>
                   <div class="prop-row prop-group">
@@ -855,7 +854,7 @@
                     <span>(200 OK)</span>
                   </h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Return a capitalized version of the L1 answer&quot;</span>
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;What is your favourite colour?&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -873,7 +872,7 @@
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Submit the answer to the L2 programming puzzle</span>
+              <span class="operation-summary">Submit the answer to the L2 question.</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -903,7 +902,7 @@
                     </div>
                     <div class="prop-value columns small-6">
                       <!-- <div class="swagger-request-description"> -->
-                      <p>Answer to the puzzle issued by the GET API.</p>
+                      <p>Answer to the question issued by the GET API.</p>
                       <!-- </div> -->
                     </div>
                   </div>
@@ -916,7 +915,7 @@
                   </h5>
                   <h5>Request Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;OLLEH&quot;</span>
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;blue&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -964,7 +963,7 @@
                     <span>(200 OK)</span>
                   </h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;certString&quot;</span>: <span class="hljs-string">&quot;----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----&quot;</span>
+  <span class="hljs-attr">&quot;keyString&quot;</span>: <span class="hljs-string">&quot;----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1165,11 +1164,6 @@
                       <span class="json-property-range" title="Value limits"></span>
                       <span class="json-property-required"></span>
                     </dt>
-                    <dt data-property-name="string">
-                      <span class="json-property-name">string:</span>
-                      <span class="json-property-type">string</span>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
                   </dl>
                 </section>
               </div>
@@ -1177,8 +1171,7 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Reverse the given string&quot;</span>,
-  <span class="hljs-attr">&quot;string&quot;</span>: <span class="hljs-string">&quot;hello&quot;</span>
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;What is the airspeed velocity of an unladen swallow?&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1212,7 +1205,7 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;olleh&quot;</span>
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-number">1000</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1245,7 +1238,7 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;Return a capitalized version of the L1 answer&quot;</span>
+  <span class="hljs-attr">&quot;text&quot;</span>: <span class="hljs-string">&quot;What is your favourite colour?&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1278,7 +1271,7 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;OLLEH&quot;</span>
+  <span class="hljs-attr">&quot;answer&quot;</span>: <span class="hljs-string">&quot;blue&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
@@ -1338,8 +1331,8 @@
               <div class="doc-copy">
                 <section class="json-schema-properties">
                   <dl>
-                    <dt data-property-name="certString" class="has-description">
-                      <span class="json-property-name">certString:</span>
+                    <dt data-property-name="keyString" class="has-description">
+                      <span class="json-property-name">keyString:</span>
                       <span class="json-property-type">string</span>
                       <span class="json-property-range" title="Value limits"></span>
                     </dt>
@@ -1353,7 +1346,7 @@
                 <section>
                   <h5>Example</h5>
                   <!-- <div class="hljs"> --><pre><code class="hljs lang-json">{
-  <span class="hljs-attr">&quot;certString&quot;</span>: <span class="hljs-string">&quot;----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----&quot;</span>
+  <span class="hljs-attr">&quot;keyString&quot;</span>: <span class="hljs-string">&quot;----BEGIN PRIVATE KEY-----\\n{private-key-contents}\\n-----END PRIVATE KEY-----&quot;</span>
 }
 </code></pre>
                   <!-- </div> -->
