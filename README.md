@@ -23,10 +23,9 @@ you will be able to apply what you have learned from our sharing session.
 | 1 | Introduction to APEX|
 | 2 | RESTful API Design and Best Practices |
 | 3 | API Security |
-| 4 | Quick Break (Optional) 10 Minutes|
+| 4 | Tea Break 20 Minutes|
 | 5 | APEX Demo|
-| 6 | Tea Break 20 Minutes|
-| 7 | API Challenge|
+| 6 | Workshop - API Challenge|
 
 ## Prerequisites
 
