@@ -67,50 +67,55 @@ when time is up.
 
 ### Instructions
  
-Participants will need to make use of the game's APIs to obtain weapons and attack other teams with their weapons. There
-are 3 types of weapons in this game: snow balls, cannon balls and dragon balls. Each weapon deals progressively higher 
+Participants will need to make use of the game's APIs to obtain weapons and attack other teams with their weapons. 
+
+The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018. The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder.
+
+There are 3 types of weapons in this game: snow balls, cannon balls and dragon balls. Each weapon deals progressively higher 
 damage and are harder to obtain. Each team would start with 10 snow balls.
 
 There are 4 types of APIs used to interact with the game backend: status, weapon, blacksmith, attack.
 
-In general, your objectives in this game would be to call the weapon APIs to obtain ammo, and call the attack API to 
+In general, your objectives in this game would be to call the PUT /weapons APIs to obtain ammo, and call the POST /attack API to 
 attack other teams with the ammo you have accumulated. 
 
 To make API calls, you can either use [Postman](https://www.getpostman.com) or the 
-[superagent](https://github.com/visionmedia/superagent) in Node.js (recommended).
+[superagent](https://github.com/visionmedia/superagent) in Node.js.
 
 Note however, that the cannon ball and dragon ball weapon APIs
-are secured with Apex L1 and L2 auth policies respectively. This means that you would need to use the blacksmith APIs to
-obtain secrets, and use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package to
-sign your API calls to obtain these two weapons.
+are secured with Apex L1 and L2 auth policies respectively. You would need to use the blacksmith APIs to
+obtain secrets, then use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package or [Apex signature validator](https://github.com/GovTechSG/apex-signature-validator) to
+obtain Apex signatures for your API calls to obtain these two weapons.
 Consequently, they are significantly more powerful than snow balls, whose API is unsecured.
 
 An example of the code you will write to play this game is included below. It is written for Node.js, and includes code
 that interacts with the game APIs by sending HTTP requests. It also demonstrates how to generate Apex signatures.
 
 #### Summary
+1. Go through the API documentation to find out the parameters needed in your API calls
 
-1. To make API calls, use [Postman](https://www.getpostman.com) or 
-[superagent](https://github.com/visionmedia/superagent) ([documentation](http://visionmedia.github.io/superagent/))
-2. To generate Apex signatures, use our [node-apex-api-security npm package](https://github.com/GovTechSG/node-apex-api-security)
+1. Make PUT /weapons API calls to obtain weapons and make POST /attack API calls to bring down other teams
 
-#### API documentation
+2. To make L1/L2 authenticated API calls using Postman:
 
-The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018.
-The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder.
+    Obtain an Apex authorization token containing your Apex signature with [Apex signature validator](https://github.com/GovTechSG/apex-signature-validator), then set the 'Authorization' header in your Postman request to the generated token.
 
-All APIs except those listed below are L0 (unsecured) and do not require authentication via Apex signatures.
+3. To make L1/L2 authenticated API calls using node.js:
+
+    Use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package to obtain an Apex authorization token and use the [superagent](https://github.com/visionmedia/superagent) HTTP library to make your API calls with the 'Authorization' header set to the generated token. You can also use other HTTP request libraries if you wish.
+
+#### List of secured APIs
 
 ![List of secured APIs](/assets/secured_apis.png)
 
-#### Getting started
+#### Interacting with APIs through Node.js
 
-We will use superagent to make HTTP calls and node-apex-api-security to sign our secured Apex API calls.
+In the examples below we will use `superagent` to make HTTP calls and `node-apex-api-security` to sign our secured Apex API calls.
 You can learn how to use them from their documentation:
-1. [Superagent documentation](http://visionmedia.github.io/superagent/)
-2. [Node-apex-api-security documentation](https://github.com/GovTechSG/node-apex-api-security)
- 
-Navigate to your desired directory and install them:
+* [Superagent documentation](http://visionmedia.github.io/superagent/)
+* [node-apex-api-security documentation](https://github.com/GovTechSG/node-apex-api-security)
+
+Navigate to your desired directory and install them through npm:
 
 ```bash
 $ npm install node-apex-api-security # Required for generating Apex signature tokens
@@ -211,6 +216,8 @@ let authToken = ApiSigningUtil.getSignatureToken({
     secret: secret, // Obtained from blacksmith POST API
     authPrefix: 'apex_l1_eg',
     httpMethod: 'put'
+    // To call /weapons/dragonball L2 API, use the keyString parameter instead of secret:
+    // keyString: '-----BEGIN PRIVATE KEY-----\n...'
 });
 
 // API to obtain cannon balls
