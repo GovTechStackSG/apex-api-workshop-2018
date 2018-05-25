@@ -128,7 +128,7 @@ Create a new .js file in your directory and run it with Node.js. For example: `$
 // game.js
 
 // Import our dependencies
-let ApiSigningUtil = require('node-apex-api-security');
+let ApiSigningUtil = require('node-apex-api-security').ApiSigningUtil; //Import the class from the library
 let request = require('superagent'); // Our HTTP request library. See https://visionmedia.github.io/superagent/
 
 // Let's make a HTTP call to find the status for our team
