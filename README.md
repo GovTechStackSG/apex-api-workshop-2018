@@ -4,6 +4,7 @@
 
  * [Overview](#overview)
  * [Agenda](#agenda)
+ * [Presentation](#presentation-slides)
  * [Prerequisites](#prerequisites)
  * [Preparation](#preparation)
  * [API Challenge](#api-challenge)
@@ -29,7 +30,7 @@ you will be able to apply what you have learned from our sharing session.
 
 ## Presentation Slides
 
-Slides from the session are available below here :
+Slides from the session are available here :
 
 * [REST API Design Good Practices](/docs/01_REST_API_Designs.pdf)
 * [REST API Security](docs/012_REST_API_Security.pdf)
