@@ -231,6 +231,14 @@ request.put('https://apex.workshop.com.api.challenge.host/api/weapons/cannonball
     });
 ```
 
+### Presentation Slides
+
+Slides from the session are available below here :
+
+* [REST API Design Good Practices](/docs/01_REST_API_Designs.pdf)
+* [REST API Security](docs/012_REST_API_Security.pdf)
+
+
 ### Important links
 - Interactive Apex signature token validator: https://github.com/GovTechSG/apex-signature-validator
 This is an interactive HTML app that lets you fill in each parameter individually and generates an Apex signature which 
