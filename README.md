@@ -27,6 +27,14 @@ you will be able to apply what you have learned from our sharing session.
 | 5 | APEX Demo|
 | 6 | Workshop - API Challenge|
 
+## Presentation Slides
+
+Slides from the session are available below here :
+
+* [REST API Design Good Practices](/docs/01_REST_API_Designs.pdf)
+* [REST API Security](docs/012_REST_API_Security.pdf)
+
+
 ## Prerequisites
 
 - Some programming knowledge, preferably in Javascript. Example files in Javascript (for Node.js) will be provided for 
@@ -230,14 +238,6 @@ request.put('https://apex.workshop.com.api.challenge.host/api/weapons/cannonball
         console.log(response.body) // If call is successful, prints updated ammo count for your team.
     });
 ```
-
-### Presentation Slides
-
-Slides from the session are available below here :
-
-* [REST API Design Good Practices](/docs/01_REST_API_Designs.pdf)
-* [REST API Security](docs/012_REST_API_Security.pdf)
-
 
 ### Important links
 - Interactive Apex signature token validator: https://github.com/GovTechSG/apex-signature-validator
