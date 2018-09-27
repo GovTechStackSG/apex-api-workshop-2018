@@ -1,6 +1,6 @@
 # APEX API Challenge
 ![APEX Logo](/assets/color_apex_landscape.png)
-## May 2018 GDS AI Conference - APEX Hands-on Workshop
+## STACK 2018 - APEX Hands-on Workshop
 
  * [Overview](#overview)
  * [Agenda](#agenda)
@@ -14,19 +14,17 @@ visit this about once a week to see what's new as a way to help you prepare for 
 
 ## Overview
 
-This is a hands-on session where participants will design and secure their APIs. You will also get to play a game where 
-you will be able to apply what you have learned from our sharing session.
+This is a hands-on session where participants will learn how to design and secure their APIs. There will also be an API challenge where participants can apply what they have learned to generate API signatures to authenticate with Apex APIs.
 
 ## Agenda
 
-| No | Sessions |
-| --- | --- |
-| 1 | Introduction to APEX|
-| 2 | RESTful API Design and Best Practices |
-| 3 | API Security |
-| 4 | Tea Break 20 Minutes|
-| 5 | APEX Demo|
-| 6 | Workshop - API Challenge|
+| No  | Sessions                           |
+| --- | ---------------------------------- |
+| 1   | Intro to APEX                      |
+| 2   | REST API Design and Best Practices |
+| 3   | API Security                       |
+| 5   | APEX Demo                          |
+| 6   | Workshop - API Challenge           |
 
 ## Presentation Slides
 
@@ -41,25 +39,17 @@ Slides from the session are available here :
 - Some programming knowledge, preferably in Javascript. Example files in Javascript (for Node.js) will be provided for 
 the workshop.
 - Working laptop with Wifi capability.
-- Your curiousity!
 
-## Preparation
+### Software
 
-### Participant's machine set-up 
-
-Please set up your machine before the session with the followings :
-
-- Google Chrome (highly recommended)
-- [Node.js version, 8.x.x LTS highly recommended](https://nodejs.org/en/download/)
-- Text Editors
-    - [Microsoft VS Code](https://code.visualstudio.com/download) (Recommended)
-    - Notepad++/Sublime Text
-    - Vim/Nano
-- API Test Client (Optional) 
-    - [Postman Chrome Plugin](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) 
-    or [Postman Desktop App](https://www.getpostman.com/) (Recommended)
-    - Restlet
+Please make sure you have the following installed on your laptops:
+- Google Chrome
+- [Node.js >8](https://nodejs.org/en/download/)
+- A text editor, such as Sublime, Notepad++, [Microsoft VS Code](https://code.visualstudio.com/download) etc
+- HTTP API Development Client (Optional) 
+    - [Postman](https://www.getpostman.com/)
 - [Git](https://git-scm.com/downloads)
+
 ## API Challenge
 *Please make sure that you have the Node.js runtime installed on your laptop*
 
@@ -103,13 +93,13 @@ that interacts with the game APIs by sending HTTP requests. It also demonstrates
 #### Summary
 1. Go through the API documentation to find out the parameters needed in your API calls
 
-1. Make PUT /weapons API calls to obtain weapons and make POST /attack API calls to bring down other teams
+2. Make PUT /weapons API calls to obtain weapons and make POST /attack API calls to bring down other teams
 
-2. To make L1/L2 authenticated API calls using Postman:
+3. To make L1/L2 authenticated API calls using Postman:
 
     Obtain an Apex authorization token containing your Apex signature with [Apex signature validator](https://github.com/GovTechSG/apex-signature-validator), then set the 'Authorization' header in your Postman request to the generated token.
 
-3. To make L1/L2 authenticated API calls using node.js:
+4. To make L1/L2 authenticated API calls using node.js:
 
     Use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package to obtain an Apex authorization token and use the [superagent](https://github.com/visionmedia/superagent) HTTP library to make your API calls with the 'Authorization' header set to the generated token. You can also use other HTTP request libraries if you wish.
 
