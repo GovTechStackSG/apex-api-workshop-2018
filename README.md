@@ -1,4 +1,4 @@
-# APEX API Challenge
+# APEX API Workshop
 ![APEX Logo](/assets/color_apex_landscape.png)
 ## STACK 2018 - APEX Hands-on Workshop
 
