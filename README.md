@@ -16,23 +16,14 @@ visit this about once a week to see what's new as a way to help you prepare for 
 
 This is a hands-on session where participants will learn how to design and secure their APIs. There will also be an API challenge where participants can apply what they have learned to generate API signatures to authenticate with Apex APIs.
 
-## Agenda
-
-| No  | Sessions                           |
-| --- | ---------------------------------- |
-| 1   | Intro to APEX                      |
-| 2   | REST API Design and Best Practices |
-| 3   | API Security                       |
-| 5   | APEX Demo                          |
-| 6   | Workshop - API Challenge           |
-
 ## Presentation Slides
 
-Slides from the session are available here :
+Slides from the HUONE session are available here :
 
 * [REST API Design Good Practices](/docs/01_REST_API_Designs.pdf)
 * [REST API Security](docs/012_REST_API_Security.pdf)
 
+Slides from the STACK 2018 session are available here: https://goo.gl/k4C4YN
 
 ## Prerequisites
 
@@ -53,6 +44,9 @@ Please make sure you have the following installed on your laptops:
 ## API Challenge
 *Please make sure that you have the Node.js runtime installed on your laptop*
 
+### API Documentation
+API challenge documentation can be found at https://documenter.getpostman.com/view/2049715/RWgjYgtK. You can find API URLs and example headers and request bodies, if applicable.
+
 ### Take aways
 - Participants will learn how APIs are secured on Apex.
 - Participants will learn how to invoke an unsecured/L1/L2 API. 
@@ -65,25 +59,11 @@ Participants will be split into 10 teams. The goal of the game is to be the last
 when time is up.  
 
 ### Instructions
- 
 Participants will need to make use of the game's APIs to obtain weapons and attack other teams with their weapons. 
 
-The full API documentation can be found at https://govtechstacksg.github.io/apex-api-workshop-2018. The corresponding `swagger.yaml` (API definition) file can be found in the `docs` folder.
+To make API calls, you can write Node.js scripts using the [superagent](https://github.com/visionmedia/superagent) HTTP request library. Alternative, a GUI solution is available: [Postman](https://www.getpostman.com).
 
-There are 3 types of weapons in this game: snow balls, cannon balls and dragon balls. Each weapon deals progressively higher 
-damage and are harder to obtain. Each team would start with 10 snow balls.
-
-There are 4 types of APIs used to interact with the game backend: status, weapon, blacksmith, attack.
-
-In general, your objectives in this game would be to call the PUT /weapons APIs to obtain ammo, and call the POST /attack API to 
-attack other teams with the ammo you have accumulated. 
-
-To make API calls, you can either use [Postman](https://www.getpostman.com) or the 
-[superagent](https://github.com/visionmedia/superagent) in Node.js.
-
-Note however, that the cannon ball and dragon ball weapon APIs
-are secured with Apex L1 and L2 auth policies respectively. You would need to use the blacksmith APIs to
-obtain secrets, then use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package or [Apex signature validator](https://github.com/GovTechSG/apex-signature-validator) to
+The APIs to obtain more powerful weapons are secured behind Apex L1 and L2 security policies. Use our [node-apex-api-security](https://github.com/GovTechSG/node-apex-api-security) npm package or [Apex signature validator](https://github.com/GovTechSG/apex-signature-validator) to
 obtain Apex signatures for your API calls to obtain these two weapons.
 Consequently, they are significantly more powerful than snow balls, whose API is unsecured.
 
