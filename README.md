@@ -21,7 +21,7 @@ This is a hands-on session where participants will learn how to design and secur
 Slides from the HUONE session are available here :
 
 * [REST API Design Good Practices](/docs/01_REST_API_Designs.pdf)
-* [REST API Security](docs/012_REST_API_Security.pdf)
+* [REST API Security](docs/02_REST_API_Security.pdf)
 
 Slides from the STACK 2018 session are available here: https://goo.gl/k4C4YN
 
